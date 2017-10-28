@@ -1,9 +1,15 @@
 # Luis Damiano
 
+## Evaluating Forecast Accuracy of GARCH Volatility Models Applied to Daily Stock Prices in Argentina
+October 2017 - Graduate thesis for the Master’s in Applied Statistics program.
+
+* Thesis: [view online](./personal/GARCH_forecast_accuracy.pdf).
+* Presentation: [view online](./personal/GARCH_forecast_accuracy_presentation.pdf).
+
 ##  Daily Stock Price Forecasts in Argentina Using Hidden Markov Models
 October 2017 - A talk at the Inter-American Statistical Conference 2017.
 
-* Presentation: [view online](./personal/IOHMM_stock_forecast_argentina.pdf) (Spanish).
+* Presentation: [view online](./personal/IOHMM_stock_forecast_argentina.pdf).
 
 ## Bayesian Hierarchical Hidden Markov Models applied to financial time series
 August 2017 - As part of my Google Summer of Code 2017 project.
