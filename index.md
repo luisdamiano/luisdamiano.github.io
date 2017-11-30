@@ -1,5 +1,7 @@
 # Luis Damiano
 
+[Vitae](./personal/cv_luis_damiano.pdf)
+
 ## Evaluating Forecast Accuracy of GARCH Volatility Models Applied to Daily Stock Prices in Argentina
 October 2017 - Graduate thesis for the Master’s in Applied Statistics program.
 
