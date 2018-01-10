@@ -13,7 +13,7 @@ October 2017 - A talk at the Inter-American Statistical Conference 2017.
 
 * Presentation: [view online](./personal/IOHMM_stock_forecast_argentina.pdf).
 
-## Bayesian Hierarchical Hidden Markov Models applied to financial time series
+## Bayesian Hierarchical Hidden Markov Models Applied to Financial Time Series
 August 2017 - As part of my Google Summer of Code 2017 project.
 
 * [A brief technical introduction to Hidden Markov Models](gsoc17/hmm_techreview.pdf).
