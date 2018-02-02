@@ -2,6 +2,11 @@
 
 [Vitae](./personal/cv_luis_damiano.pdf)
 
+## A Tutorial on Hidden Markov Models using Stan
+January 2018 - Accepted for publication in the proceedings of StanCon 2018.
+
+* Article: [view online](./stancon18/hmm_stan_tutorial.pdf)
+
 ## Evaluating Forecast Accuracy of GARCH Volatility Models Applied to Daily Stock Prices in Argentina
 October 2017 - Graduate thesis for the Master’s in Applied Statistics program.
 
