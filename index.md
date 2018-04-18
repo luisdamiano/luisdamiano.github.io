@@ -2,6 +2,13 @@
 
 [Vitae](./personal/cv_luis_damiano.pdf)
 
+## Series de Tiempo
+Abril 2018 - Materia de la Maestría en Estadística Aplicada de la UNR
+
+* Notas: [0](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/0.pdf) | [1](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/1.pdf) | [2](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/2.pdf) | [3](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/3.pdf) | [4](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/4.pdf) | [5](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/5.pdf) | [6](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/6.pdf) | [7](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/7.pdf) | [8](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/8.pdf)
+* Data: [view online](https://github.com/luisdamiano/unrseries18/tree/master/clases/data)
+* Final: [view online](https://github.com/luisdamiano/unrseries18/raw/master/final.pdf)
+
 ## A Tutorial on Hidden Markov Models using Stan
 January 2018 - Accepted for publication in the proceedings of StanCon 2018.
 
