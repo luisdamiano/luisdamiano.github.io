@@ -1,6 +1,9 @@
-# Luis Damiano
+[__Vitae__](./personal/cv_luis_damiano.pdf)
 
-[Vitae](./personal/cv_luis_damiano.pdf)
+## bayesdfa: Bayesian Dynamic Factor Analysis (DFA) with 'Stan'
+September 2018 - An R Package available on CRAN
+
+* CRAN: [view online](https://cran.r-project.org/web/packages/bayesdfa/).
 
 ## Hierarchical Hidden Markov Models in High-Frequency Stock Markets
 June 2018 - A talk at R/Finance 2018 Conference.
