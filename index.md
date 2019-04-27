@@ -5,7 +5,7 @@
 ## BayesHMM: Full Bayesian Inference for Hidden Markov Models
 April 2019 - A poster at the 44th Spring Lecture Series.
 
-* Poster: [view online](./personal/cv_luis_damiano.pdf).
+* Poster: [view online](./arkansas19/BayesHMM_poster.pdf).
 
 ## bayesdfa: Bayesian Dynamic Factor Analysis (DFA) with 'Stan'
 September 2018 - An R Package available on CRAN.
