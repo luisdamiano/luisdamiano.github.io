@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Short bio on Hugo Future Imperfect</title>
+    <link>/</link>
+    <description>Recent content in Short bio on Hugo Future Imperfect</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Academic work</title>
+      <link>/research/work/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/research/work/</guid>
+      <description>Academic Work This short list excludes in printing and in progress work. A detailed Curriculum Vitae is available here.
+BayesHMM: Full Bayesian Inference for Hidden Markov Models April 2019 - A poster presented at the 44th Spring Lecture Series, University of Arkansas.
+ Poster: view online.  bayesdfa: Bayesian Dynamic Factor Analysis (DFA) with &amp;lsquo;Stan&amp;rsquo; September 2018 - An R Package available on CRAN.
+ CRAN: view online.  BayesHMM: An R Package for Full Bayesian Inference for Hidden Markov Models August 2018 - Google Summer of Code 2018 project.</description>
+    </item>
+    
+  </channel>
+</rss>
