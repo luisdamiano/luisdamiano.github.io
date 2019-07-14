@@ -4,3 +4,24 @@
   is an official part of the theme (ex. Pull Requests) should be included in main.css
   within the formating given.
 */
+
+section .recent-posts {
+  display:none;
+}
+
+.post > header .title {
+  /* padding: 3.75em 3em 3.3em 3em; */
+  padding: 1.3em 3em 1.3em 3em !important;
+}
+
+#intro > a {
+  border-bottom: 0px;
+}
+
+#TableOfContents > ul > li > ul {
+  margin: 0;
+}
+
+ul > li > ul  > li > ul {
+  margin: 0 !important;
+}

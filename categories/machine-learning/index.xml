@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Short bio on Luis Damiano</title>
-    <link>/</link>
-    <description>Recent content in Short bio on Luis Damiano</description>
+    <title>Machine Learning on Luis Damiano</title>
+    <link>/categories/machine-learning/</link>
+    <description>Recent content in Machine Learning on Luis Damiano</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,18 +18,6 @@
       
       <guid>/blog/feature-engineering-for-machine-learning/</guid>
       <description>Introduction They say [citation needed] that feature engineering is key for prediction and one should rather have a simple enough model fed with solid inputs. For instance, well-crafted nonlinear features could take the burden off nonlinear models. This is a rough and high-level list of the feature engineering strategies I&amp;rsquo;ve found. Mainly, I&amp;rsquo;m looking for when, pros, cons, recommendations, and warnings. Here definitions and explanations are intentionally omitted as they can be readily looked up on demand.</description>
-    </item>
-    
-    <item>
-      <title>Academic work</title>
-      <link>/research/work/</link>
-      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/research/work/</guid>
-      <description>Academic Work This short list excludes in printing and in progress work. A detailed Curriculum Vitae is available here.
-BayesHMM: Full Bayesian Inference for Hidden Markov Models April 2019 - A poster presented at the 44th Spring Lecture Series, University of Arkansas.
- Poster: view online.  bayesdfa: Bayesian Dynamic Factor Analysis (DFA) with &amp;lsquo;Stan&amp;rsquo; September 2018 - An R Package available on CRAN.
- CRAN: view online.  BayesHMM: An R Package for Full Bayesian Inference for Hidden Markov Models August 2018 - Google Summer of Code 2018 project.</description>
     </item>
     
   </channel>

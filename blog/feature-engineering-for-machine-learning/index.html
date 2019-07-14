@@ -1,0 +1,1085 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "/"
+        },
+        "articleSection" : "blog",
+        "name" : "Feature engineering for machine learning",
+        "headline" : "Feature engineering for machine learning",
+        "description" : "Introduction They say [citation needed] that feature engineering is key for prediction and one should rather have a simple enough model fed with solid inputs. For instance, well-crafted nonlinear features could take the burden off nonlinear models. This is a rough and high-level list of the feature engineering strategies I&rsquo;ve found. Mainly, I&rsquo;m looking for when, pros, cons, recommendations, and warnings. Here definitions and explanations are intentionally omitted as they can be readily looked up on demand.",
+        "inLanguage" : "en",
+        "author" : "",
+        "creator" : "",
+        "publisher": "",
+        "accountablePerson" : "",
+        "copyrightHolder" : "",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-07-12 00:00:00 &#43;0000 UTC",
+        "dateModified" : "2019-07-12 00:00:00 &#43;0000 UTC",
+        "url" : "/blog/feature-engineering-for-machine-learning/",
+        "wordCount" : "1318",
+        "keywords" : [ "Blog" ]
+    }
+    </script>
+        
+            
+                <title>Feature engineering for machine learning</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.51" />
+        
+
+
+        
+            <meta name="author" content="Luis Damiano">
+        
+        
+            
+                <meta name="description" content="Luis Damiano PhD. Student in Statistics at Iowa State University Time Series State Space Models Spatio-temporal Models Gaussian Processes Computer Experiments Bayesian Inference">
+            
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Feature engineering for machine learning"/>
+<meta name="twitter:description" content="Introduction They say [citation needed] that feature engineering is key for prediction and one should rather have a simple enough model fed with solid inputs. For instance, well-crafted nonlinear features could take the burden off nonlinear models. This is a rough and high-level list of the feature engineering strategies I&rsquo;ve found. Mainly, I&rsquo;m looking for when, pros, cons, recommendations, and warnings. Here definitions and explanations are intentionally omitted as they can be readily looked up on demand."/>
+<meta name="twitter:site" content="@ldamiano0"/>
+
+        <meta property="og:title" content="Feature engineering for machine learning" />
+<meta property="og:description" content="Introduction They say [citation needed] that feature engineering is key for prediction and one should rather have a simple enough model fed with solid inputs. For instance, well-crafted nonlinear features could take the burden off nonlinear models. This is a rough and high-level list of the feature engineering strategies I&rsquo;ve found. Mainly, I&rsquo;m looking for when, pros, cons, recommendations, and warnings. Here definitions and explanations are intentionally omitted as they can be readily looked up on demand." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/feature-engineering-for-machine-learning/" /><meta property="article:published_time" content="2019-07-12T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-07-12T00:00:00&#43;00:00"/>
+
+        <meta property="og:image" content="//images/logo.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        
+<meta itemprop="name" content="Feature engineering for machine learning">
+<meta itemprop="description" content="Introduction They say [citation needed] that feature engineering is key for prediction and one should rather have a simple enough model fed with solid inputs. For instance, well-crafted nonlinear features could take the burden off nonlinear models. This is a rough and high-level list of the feature engineering strategies I&rsquo;ve found. Mainly, I&rsquo;m looking for when, pros, cons, recommendations, and warnings. Here definitions and explanations are intentionally omitted as they can be readily looked up on demand.">
+
+
+<meta itemprop="datePublished" content="2019-07-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-07-12T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1318">
+
+
+
+<meta itemprop="keywords" content="" />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+            <link rel="stylesheet" href="/css/academicons.min.css">
+        
+
+        
+            
+                
+            
+        
+
+
+  
+    
+    <link href='//stackpath.bootstrapcdn.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+  
+
+
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-111579790-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/">blog</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>Short Bio
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/research/work/">
+                            <i class="fa fa-flask">&nbsp;</i>Academic Work
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/work/cv_luis_damiano.pdf">
+                            <i class="fa fa-file">&nbsp;</i>Vitae
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/blog/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>Short Bio
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/research/work/">
+                            <h3>
+                                <i class="fa fa-flask">&nbsp;</i>Academic Work
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/work/cv_luis_damiano.pdf">
+                            <h3>
+                                <i class="fa fa-file">&nbsp;</i>Vitae
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/blog/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section class="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/feature-engineering-for-machine-learning/">Feature engineering for machine learning</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-07-12'>
+                                    July 12, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2fblog%2ffeature-engineering-for-machine-learning%2f&amp;text=Feature%20engineering%20for%20machine%20learning&amp;via=ldamiano0" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2fblog%2ffeature-engineering-for-machine-learning%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2fblog%2ffeature-engineering-for-machine-learning%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2fblog%2ffeature-engineering-for-machine-learning%2f&amp;title=Feature%20engineering%20for%20machine%20learning" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2fblog%2ffeature-engineering-for-machine-learning%2f&amp;title=Feature%20engineering%20for%20machine%20learning" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2fblog%2ffeature-engineering-for-machine-learning%2f&amp;title=Feature%20engineering%20for%20machine%20learning" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2fblog%2ffeature-engineering-for-machine-learning%2f&amp;description=Feature%20engineering%20for%20machine%20learning" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by Luis%20Damiano&amp;body=%2fblog%2ffeature-engineering-for-machine-learning%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="/blog/feature-engineering-for-machine-learning/">Feature engineering for machine learning</a></h1>
+            
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2019-07-12'>
+            July 12, 2019</time>
+        <span class="author">Luis Damiano</span>
+        
+            <p>7 minute read</p>
+        
+    </div>
+</header>
+
+
+  
+
+  
+
+
+  
+
+
+
+<aside>
+    <header>
+    <h2>Table of Content</h2>
+    </header>
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#general">General</a></li>
+<li><a href="#univariate-numeric-variables">Univariate numeric variables</a></li>
+<li><a href="#univariate-nonordinal-categorical-variables">Univariate nonordinal categorical variables</a></li>
+<li><a href="#multivariate-data-in-linear-spaces">Multivariate data in linear spaces</a></li>
+<li><a href="#multivariate-data-in-nonlinear-spaces">Multivariate data in nonlinear spaces</a></li>
+<li><a href="#other-brief-mentions">Other brief mentions</a>
+<ul>
+<li><a href="#feature-selection">Feature selection</a></li>
+<li><a href="#model-stacking">Model stacking</a></li>
+</ul></li>
+<li><a href="#more-to-read">More to read</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#share-your-knowledge">Share your knowledge</a></li>
+</ul>
+</nav>
+</aside>
+
+ 
+
+  <div id="content">
+    
+
+<h1 id="introduction">Introduction</h1>
+
+<p>They say [citation needed] that feature engineering is key for prediction and one should rather have a simple enough model fed with solid inputs. For instance, well-crafted nonlinear features could take the burden off nonlinear models. This is a rough and high-level list of the feature engineering strategies I&rsquo;ve found. Mainly, I&rsquo;m looking for when, pros, cons, recommendations, and warnings. Here definitions and explanations are intentionally omitted as they can be readily looked up on demand. It borrows heavily from [@zheng2018] as well as from other sources cited inline.</p>
+
+<p>This is a living document. Do you see something missing, something you don&rsquo;t agree with, or a mistake? Please, write to me and I&rsquo;ll try to improve it.</p>
+
+<h1 id="general">General</h1>
+
+<ul>
+<li><strong>Data unpacking</strong>:
+
+<ul>
+<li>e.g. fields with dictionaries, lists, JSON, dates.</li>
+</ul></li>
+<li><strong>Sanity check</strong>:
+
+<ul>
+<li>Scale, impossible values (e.g. sign, out of boundaries), fishy values (e.g. magnitude), NA.</li>
+</ul></li>
+</ul>
+
+<h1 id="univariate-numeric-variables">Univariate numeric variables</h1>
+
+<ul>
+<li><strong>Counts</strong>:
+
+<ul>
+<li><strong>Binarization</strong>:
+
+<ul>
+<li>e.g. $x^* = max(x, 1)$ (one if counted at least once).</li>
+<li>Use with highly right-skewed data (lots of small counts).</li>
+</ul></li>
+<li><strong>Quantizing</strong> (AKA binning or discretization):
+
+<ul>
+<li>Fixed-width (linear, exponential) or adaptive (quantiles).</li>
+<li>Use with highly right-skewed data (lots of small counts).</li>
+</ul></li>
+</ul></li>
+<li><strong>Log-transform</strong>:
+
+<ul>
+<li><strong>Log-transformation</strong>:
+
+<ul>
+<li>Use for exponential processes, highly skewed data, outliers.</li>
+<li>Add constant for nonpositive data.</li>
+</ul></li>
+<li><strong>Power transforms</strong> (AKA variance-stabilizing transformations):
+
+<ul>
+<li>e.g. square root for Poisson, Box-Cox.</li>
+<li>Use to break mean-variance dependency.</li>
+</ul></li>
+</ul></li>
+<li><strong>Normalization</strong> (AKA scaling):
+
+<ul>
+<li><strong>General</strong>:
+
+<ul>
+<li>Usually run marginally.</li>
+<li>Uses:
+
+<ul>
+<li>Numerical stability.</li>
+<li>Scale of set of inputs differs wildy.</li>
+<li>K-means, KNN, RBF kernels, and other distance-based methods. No need for decision trees if scale is constant.</li>
+</ul></li>
+<li><strong>Don&rsquo;t</strong> center sparse data.</li>
+</ul></li>
+<li><strong>Min-max</strong>:
+
+<ul>
+<li>Map to $[0, 1]$: $x^* = [x - min(x)][max(x) - min(x)]^{-1}$</li>
+</ul></li>
+<li><strong>Variance scaling</strong> (AKA standarization):
+
+<ul>
+<li>Map to zero mean and unitary variance: $x^* = [x - mean(x)][sd(x)]^{-1}$.</li>
+<li>Also $x^* = [x - median(x)][IQR(x)]^{-1}$, but what properties does this new variable have?</li>
+</ul></li>
+<li>$\ell^2$ <strong>normalization</strong>:
+
+<ul>
+<li>Map to unit vector: $\bf{x}^* =  \bf{x} \left\lVert \bf{x} \right\lVert_2^{-1}$</li>
+</ul></li>
+</ul></li>
+<li><strong>Polynomial features</strong>:
+
+<ul>
+<li>Add nonlinear features of the input data.</li>
+</ul></li>
+<li><strong>Interaction</strong>:
+
+<ul>
+<li><strong>Multiplication</strong>:
+
+<ul>
+<li>Pairwise interaction increases complexity from $O(n)$ to $O(n^2)$.
+<br /></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="univariate-nonordinal-categorical-variables">Univariate nonordinal categorical variables</h1>
+
+<ul>
+<li><p><strong>Encoding</strong>:</p>
+
+<ul>
+<li><strong>One-hot encoding</strong> (AKA less-than-full-rank indicator variables):
+
+<ul>
+<li>Linear models don&rsquo;t have a unique solution.</li>
+<li>Missing data is easy to handle: use a vector of zeros.</li>
+<li>Does not adapt to growing categories.</li>
+<li>Computationally very expensive (e.g. not suitable for tree models).</li>
+</ul></li>
+<li><strong>Dummy encoding</strong> (AKA $K-1$ indicator variables):
+
+<ul>
+<li>Not easy to handle missing data.</li>
+</ul></li>
+<li><strong>Effect encoding</strong>:
+
+<ul>
+<li>Like dummy encoding, but reference category takes a vector of all $-1$.</li>
+<li>Intercept represents the global mean, individual coefficients capture main effect.</li>
+<li>Having a dense vector with all $-1$ may be computationally expensive.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>Large number of categories</strong>:</p>
+
+<ul>
+<li><strong>Bin counting</strong>:
+
+<ul>
+<li>Normalize categories using a conditional probability (see [@Zheng2018], ch. 5).</li>
+<li>Instead of dummy variables identifying individuals, use some statistic based on other inputs.</li>
+<li>E.g. conditional probability (empirical proportion), odds ratio, log odds ratio.</li>
+<li>Use for large number of categories (e.g. individuals, locations, devices).</li>
+<li>Reduces significantly the computational complexity of model training.</li>
+</ul></li>
+<li><strong>Backing-off</strong>:
+
+<ul>
+<li>Accumulate counts of all rare categories in a special bin.</li>
+<li>Add an indicator variable signaling the back-off bin.</li>
+</ul></li>
+<li><strong>Count-min sketch</strong>:
+
+<ul>
+<li>Use hash functions to map all categories, rare or frequent, to an output range smaller than the number of categories. Assign the minimum statistic to the new range.</li>
+</ul></li>
+</ul></li>
+
+<li><p><strong>Note on unbounded counts</strong>:</p>
+
+<ul>
+<li>If input counts increase fast, the test/live set will contain values greater than the one used for training.</li>
+<li>Retraining to adapt can be computationally expensive and hinders online prediction.</li>
+<li>Use normalized bounds in known interval, e.g. $[0, 1]$, or log-transformation to slow down rate of increase.</li>
+</ul></li>
+</ul>
+
+<h1 id="multivariate-data-in-linear-spaces">Multivariate data in linear spaces</h1>
+
+<ul>
+<li><strong>PCA</strong>:
+
+<ul>
+<li>Divide components by square root of eigenvalues to normalize the scale of PCA&rsquo;ed features to $1$ (optional).</li>
+<li>Uses:
+
+<ul>
+<li>Whitening: orthogonal features are the main interest.</li>
+<li>Dimension reduction:
+
+<ul>
+<li>Automatic: set a threshold on variance explained.</li>
+<li>Manual: visualize spectrum, look for a large drop/gap.</li>
+</ul></li>
+<li>Factor analysis: principal components are the main interest. Interpret them as driving factors.</li>
+<li>Outlier detection: e.g. [@lakhina2004] for time series.</li>
+</ul></li>
+<li>Orthogonal features are not interpretable.</li>
+<li>Computationally expensive: SVD takes $O(ND^2 + D^3)$ for $N &gt; D$.</li>
+<li>Sensible to outliers:
+
+<ul>
+<li>Be careful in general, but especially with counts.</li>
+<li>Turn this into an opportunity: use it for outlier detection :).</li>
+</ul></li>
+</ul></li>
+<li><strong>ZCA</strong>:
+
+<ul>
+<li>If $\bf{\Sigma} = \bf{VDV}^T$, the whitened points are $\bf{\tilde{x}} = \bf{V(D + \varepsilon \ I)^{-\frac{1}{2}} V^T x}$ where $\varepsilon$ is a small constant.</li>
+<li>Projections by PCA and ZCA only differ by a rotation [@montavon2012].</li>
+<li>More interpretable than PCA: it produces whitened data as close as possible to the original data in the least squares (Euclidean distance) sense [@117463]. Especially useful for images.</li>
+<li>Not for dimensionality reduction.</li>
+</ul></li>
+</ul>
+
+<h1 id="multivariate-data-in-nonlinear-spaces">Multivariate data in nonlinear spaces</h1>
+
+<ul>
+<li><strong>General gist</strong>: manifold is simpler than the dimension it occupies and can be approximately unfold by superposing flat surfaces on local neighborhoods.</li>
+<li><strong>Clustering</strong>: use membership vector as feature to reduce dimension.
+
+<ul>
+<li><strong>K-means</strong>:
+
+<ul>
+<li>Use Voronoi diagrams to visualize cluster boundaries in 2D.</li>
+<li>Unsupervised learning.</li>
+<li>Supervised learning for model stacking:
+
+<ul>
+<li>Include the target variable as an additional input to make the clustering sensitive to prediction.</li>
+<li>Call a data plumber though, there is data leakage.</li>
+<li>Less leaking than other methods: the lossy compression will also lose some information on the target variable.</li>
+<li>Accuracy on training data will be overly optimistic.</li>
+<li>Bias should go away when evaluating the test set.</li>
+</ul></li>
+<li>Metric: Euclidean distance.</li>
+<li>Most useful for real-valued, bounded numeric features. Alternatives:
+
+<ul>
+<li>Apply only on elegible features.</li>
+<li>Define custom metric.</li>
+<li>Convert categorical variables to binning statistics, then featurize.</li>
+</ul></li>
+<li>Uses:
+
+<ul>
+<li><strong>Natural number of clusters</strong>:
+
+<ul>
+<li>Use when data is dense in regions and scattered elsewhere.</li>
+<li>Select by using some quality index.</li>
+</ul></li>
+<li><strong>Vector quantization</strong> (sparse featurization):
+
+<ul>
+<li>Use when data is spread out uniformly.</li>
+<li>Reduce dimension by partitioning the data into a finite number of chunks.</li>
+<li>Geometrically, it covers a nonlinear space with patches.</li>
+<li>Selection (sphere-packing problem):
+
+<ul>
+<li>Each cluster is a sphere.</li>
+<li>The radius $r$ is the maximum error of representing a point with the centroid.</li>
+<li>In $d$ dimensions, one could fit $r^{-d}$ spheres.</li>
+<li>Number of clusters should be $O(r^{-d})$ given a fixed error tolerance $r$.</li>
+<li>Uniform is worst-case sceneario: not uniform data requires less clusters.<br /></li>
+<li>Good luck telling the distribution of high-dimensional data :)</li>
+</ul></li>
+</ul></li>
+<li><strong>Distance to centroids</strong> (dense featurization):
+
+<ul>
+<li>Use inverse distance to centroid as additional feature (helps with nonlinearity).</li>
+</ul></li>
+<li><strong>General</strong>:
+
+<ul>
+<li>Vector quantization is a lightweight and sparse representation, but may require a larger number of clusters.</li>
+<li>Distance to centroids is dense, increasing training time, but may also require a smaller number of clusters.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="other-brief-mentions">Other brief mentions</h1>
+
+<h2 id="feature-selection">Feature selection</h2>
+
+<p>See [@guyon2003] for more.</p>
+
+<ul>
+<li><strong>Filtering</strong>: remove unuseful features.
+
+<ul>
+<li>Set threshold for association score between features and response variables.
+
+<ul>
+<li>Regression: correlation or mutual information.</li>
+<li>Classification with categorical data: chi squared, information gain.</li>
+</ul></li>
+<li>Computationally cheap.</li>
+<li>Doesn&rsquo;t consider the model exployed.</li>
+<li>Use conservatively.</li>
+</ul></li>
+<li><strong>Wrappers</strong>: try subsets of features and keep the one with highest quality score.
+
+<ul>
+<li>It avoids dropping marginally uninformative, but jointly informative, features.</li>
+<li>Computationally more expensive.</li>
+</ul></li>
+<li><strong>Embedded</strong>: perform selection as part of model training.
+
+<ul>
+<li>E.g. decision tree, regularization.</li>
+<li>Selects features specifics to the model.</li>
+<li>Less powerful than wrappers but cheaper.
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="model-stacking">Model stacking</h2>
+
+<ul>
+<li>Nonlinear classifiers are expensive to train and maintain.</li>
+<li>Push the nonlinearities into the features and use a very simple, usually linear model as the last layer.</li>
+<li>Featurizer can be trained offline, effectively cutting down online prediction time.</li>
+</ul>
+
+<!--
+
+## The Machine Learning Data Analysis Cycle
+
+First cycle: subset of data.
+
+1. Hypothesis: which predictos do we expect to be related with our target variables?
+2. Data wrangling:
+    * Unpack data (e.g. fields with dictionaries, lists, json).
+3. Feature engineering.
+
+-->
+
+<h1 id="more-to-read">More to read</h1>
+
+<h1 id="references">References</h1>
+
+<p>[@117463] amoeba (<a href="https://stats.stackexchange.com/users/28666/amoeba" target="_blank">https://stats.stackexchange.com/users/28666/amoeba</a>), What is the difference between ZCA whitening and PCA whitening?, URL (version: 2017-04-13): <a href="https://stats.stackexchange.com/q/117463" target="_blank">https://stats.stackexchange.com/q/117463</a></p>
+
+<p>[@guyon2003] Guyon, Isabell, and André Elisseeff. “An Introduction to Variable and Feature Selection.” Journal of Machine Learning Research Special Issue on Variable and Feature Selection 3 (2003): 1157–1182.</p>
+
+<p>[@montavon2012] Montavon, G., Orr, G., &amp; Müller, K. R. (Eds.). (2012). Neural networks: tricks of the trade (Vol. 7700). springer.</p>
+
+<p>[@lakhina2004] Lakhina, Anukool, Mark Crovella, and Christophe Diot. “Diagnosing Network-wide Traffic Anomalies.” Proceedings of the 2004 Conference on Applications, Technologies, Architectures, and Protocols for Computer Communications (2004): 219–230.</p>
+
+<p>[@zheng2018] Zheng, A., &amp; Casari, A. (2018). Feature engineering for machine learning: principles and techniques for data scientists. &ldquo; O&rsquo;Reilly Media, Inc.&rdquo;.</p>
+
+<h1 id="share-your-knowledge">Share your knowledge</h1>
+
+<p>I&rsquo;m always looking forward to adding more material, contact me with suggestions.</p>
+
+  </div>
+
+  <footer>
+    <ul class="stats">
+  <li class="categories">
+    <ul>
+        
+            
+            
+                <i class="fa fa-folder"></i>
+                
+                
+                <li><a class="article-category-link" href="/categories/machine-learning">Machine Learning</a></li>
+                
+            
+        
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+        
+    </ul>
+  </li>
+</ul>
+
+  </footer>
+
+</article>
+
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+
+
+<ul class="actions pagination">
+    
+
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/alf.jpeg" class="intro-circle" width="50%" alt="Alf on the phone." /></a>
+      
+    
+    
+      <header>
+        <h2>Luis Damiano</h2>
+        <p>Ph.D. Student in Stats Iowa State University</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          
+    <li><a href="/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a></li>
+
+
+        
+        
+  <li><a href="//github.com/luisdamiano" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/luis-damiano-9142611a" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/ldamiano0" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//orcid.org/0000-0001-9107-0706" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a></li>
+
+
+
+
+
+  <li><a href="mailto:ldamiano@iastate.edu" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  <section class="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/feature-engineering-for-machine-learning/">Feature engineering for machine learning</a>
+              </h3>
+              
+              <time class="published" datetime='2019-07-12'>
+                July 12, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+    </div>
+  </section>
+
+  
+  
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+    <p class="copyright">
+      
+        &copy; 2019
+        
+          Luis Damiano
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+      
+      
+      
+        <script src="//stackpath.bootstrapcdn.com/highlight.js/9.11.0/highlight.min.js"></script>
+        
+        
+        
+        <script src="//stackpath.bootstrapcdn.com/highlight.js/9.11.0/languages/r.min.js"></script>
+        <script src="//stackpath.bootstrapcdn.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+        <script src="//stackpath.bootstrapcdn.com/highlight.js/9.11.0/languages/css.min.js"></script>
+        <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+      
+    
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+      <script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config"> 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+
+  </body>
+</html>
+
