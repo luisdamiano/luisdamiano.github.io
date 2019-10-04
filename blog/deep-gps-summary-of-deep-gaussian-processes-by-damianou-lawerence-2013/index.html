@@ -1,0 +1,909 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "\/"
+        },
+        "articleSection" : "blog",
+        "name" : "Deep GPs: summary of Deep Gaussian Processes by Damianou \x26 Lawerence (2013)",
+        "headline" : "Deep GPs: summary of Deep Gaussian Processes by Damianou \x26 Lawerence (2013)",
+        "description" : "This is a quick, math-free summary of Deep Gaussian Processes by Damianou \x26amp; Lawrence (2013). Many details are purposedly left out to lighten the read, see the full paper.\nDisclaimer: As this is a first draft that has not been fully edited yet, watch out for errors, inaccuracies, and unfortunate choices of technical vocabulary. Let me know if you find any of these and I\x26rsquo;ll get them fixed.\nAbout the article  Main idea: introduce GP Gaussian Processes for learning tasks.",
+        "inLanguage" : "en",
+        "author" : "",
+        "creator" : "",
+        "publisher": "",
+        "accountablePerson" : "",
+        "copyrightHolder" : "",
+        "copyrightYear" : "2019",
+        "datePublished": "2019-10-04 00:00:00 \x2b0000 UTC",
+        "dateModified" : "2019-10-04 00:00:00 \x2b0000 UTC",
+        "url" : "\/blog\/deep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013\/",
+        "wordCount" : "655",
+        "keywords" : [ "Blog" ]
+    }
+    </script>
+        
+            
+                <title>Deep GPs: summary of Deep Gaussian Processes by Damianou &amp; Lawerence (2013)</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.58.3" />
+        
+
+
+        
+            <meta name="author" content="Luis Damiano">
+        
+        
+            
+                <meta name="description" content="Luis Damiano PhD. Student in Statistics at Iowa State University Time Series State Space Models Spatio-temporal Models Gaussian Processes Computer Experiments Bayesian Inference">
+            
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Deep GPs: summary of Deep Gaussian Processes by Damianou &amp; Lawerence (2013)"/>
+<meta name="twitter:description" content="This is a quick, math-free summary of Deep Gaussian Processes by Damianou &amp; Lawrence (2013). Many details are purposedly left out to lighten the read, see the full paper.
+Disclaimer: As this is a first draft that has not been fully edited yet, watch out for errors, inaccuracies, and unfortunate choices of technical vocabulary. Let me know if you find any of these and I&rsquo;ll get them fixed.
+About the article  Main idea: introduce GP Gaussian Processes for learning tasks."/>
+<meta name="twitter:site" content="@ldamiano0"/>
+
+        <meta property="og:title" content="Deep GPs: summary of Deep Gaussian Processes by Damianou &amp; Lawerence (2013)" />
+<meta property="og:description" content="This is a quick, math-free summary of Deep Gaussian Processes by Damianou &amp; Lawrence (2013). Many details are purposedly left out to lighten the read, see the full paper.
+Disclaimer: As this is a first draft that has not been fully edited yet, watch out for errors, inaccuracies, and unfortunate choices of technical vocabulary. Let me know if you find any of these and I&rsquo;ll get them fixed.
+About the article  Main idea: introduce GP Gaussian Processes for learning tasks." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/deep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013/" />
+<meta property="article:published_time" content="2019-10-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-04T00:00:00+00:00" />
+
+        <meta property="og:image" content="//images/logo.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        <meta itemprop="name" content="Deep GPs: summary of Deep Gaussian Processes by Damianou &amp; Lawerence (2013)">
+<meta itemprop="description" content="This is a quick, math-free summary of Deep Gaussian Processes by Damianou &amp; Lawrence (2013). Many details are purposedly left out to lighten the read, see the full paper.
+Disclaimer: As this is a first draft that has not been fully edited yet, watch out for errors, inaccuracies, and unfortunate choices of technical vocabulary. Let me know if you find any of these and I&rsquo;ll get them fixed.
+About the article  Main idea: introduce GP Gaussian Processes for learning tasks.">
+
+
+<meta itemprop="datePublished" content="2019-10-04T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2019-10-04T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="655">
+
+
+
+<meta itemprop="keywords" content="" />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+            <link rel="stylesheet" href="/css/academicons.min.css">
+        
+
+        
+            
+                
+            
+        
+
+
+  
+    
+    <link href='//stackpath.bootstrapcdn.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+  
+
+
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-111579790-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/">blog</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>Short Bio
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/research/work/">
+                            <i class="fa fa-flask">&nbsp;</i>Academic Work
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/work/cv_luis_damiano.pdf">
+                            <i class="fa fa-file">&nbsp;</i>Vitae
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/blog/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>Short Bio
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/research/work/">
+                            <h3>
+                                <i class="fa fa-flask">&nbsp;</i>Academic Work
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/work/cv_luis_damiano.pdf">
+                            <h3>
+                                <i class="fa fa-file">&nbsp;</i>Vitae
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/blog/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section class="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/deep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013/">Deep GPs: summary of Deep Gaussian Processes by Damianou &amp; Lawerence (2013)</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-10-04'>
+                                    October 4, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/feature-engineering-for-machine-learning/">Feature engineering for machine learning</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2019-07-12'>
+                                    July 12, 2019</time>
+                            </header>
+                            
+
+                        </article>
+                
+
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2fblog%2fdeep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013%2f&amp;text=Deep%20GPs%3a%20summary%20of%20Deep%20Gaussian%20Processes%20by%20Damianou%20%26%20Lawerence%20%282013%29&amp;via=ldamiano0" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//plus.google.com/share?url=%2fblog%2fdeep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013%2f" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+  </a>
+</li>
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2fblog%2fdeep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2fblog%2fdeep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013%2f&amp;title=Deep%20GPs%3a%20summary%20of%20Deep%20Gaussian%20Processes%20by%20Damianou%20%26%20Lawerence%20%282013%29" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2fblog%2fdeep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013%2f&amp;title=Deep%20GPs%3a%20summary%20of%20Deep%20Gaussian%20Processes%20by%20Damianou%20%26%20Lawerence%20%282013%29" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.stumbleupon.com/submit?url=%2fblog%2fdeep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013%2f&amp;title=Deep%20GPs%3a%20summary%20of%20Deep%20Gaussian%20Processes%20by%20Damianou%20%26%20Lawerence%20%282013%29" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2fblog%2fdeep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013%2f&amp;description=Deep%20GPs%3a%20summary%20of%20Deep%20Gaussian%20Processes%20by%20Damianou%20%26%20Lawerence%20%282013%29" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by Luis%20Damiano&amp;body=%2fblog%2fdeep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h2><a href="/blog/deep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013/">Deep GPs: summary of Deep Gaussian Processes by Damianou &amp; Lawerence (2013)</a></h2>
+        
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2019-10-04'>
+            October 4, 2019</time>
+        <span class="author">Luis Damiano</span>
+        
+            <p>4 minute read</p>
+        
+    </div>
+</header>
+
+
+  
+
+  
+
+
+  
+
+
+
+<aside>
+    <header>
+    <h2>Table of Content</h2>
+    </header>
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#about-the-article">About the article</a></li>
+<li><a href="#deep-gp-big-picture">Deep GP: big picture</a></li>
+<li><a href="#relationships-with-models-in-the-gp-family">Relationships with models in the GP family.</a></li>
+<li><a href="#deep-gaussian-processes">Deep Gaussian Processes</a></li>
+</ul>
+</nav>
+</aside>
+
+ 
+
+  <div id="content">
+    
+
+<p>This is a quick, math-free summary of Deep Gaussian Processes by Damianou &amp; Lawrence (2013). Many details are purposedly left out to lighten the read, see the full paper.</p>
+
+<p>Disclaimer: As this is a first draft that has not been fully edited yet, watch out for errors, inaccuracies, and unfortunate choices of technical vocabulary. Let me know if you find any of these and I&rsquo;ll get them fixed.</p>
+
+<h1 id="about-the-article">About the article</h1>
+
+<ul>
+<li>Main idea: introduce GP Gaussian Processes for learning tasks.</li>
+<li>Motivation:
+
+<ul>
+<li>Probabilistic, yay! Know your uncertainty.</li>
+<li>Deep model seem to better capture abstract information. Layers mimic inductive reasoning and the human concept of generalization.</li>
+</ul></li>
+<li>Challenge: Can Deep GPs work with scarse data, where questions of <em>generalization</em> arise?</li>
+<li>Contributions:
+
+<ul>
+<li>Exploit advances in variational inference to marginalize the latent variables in the hierarchy variationally. Show that any number of GPs can be stacked.</li>
+<li>Use the strict lower bound on the likelihood given by variational inference for model selection in the context of scarse data.</li>
+</ul></li>
+</ul>
+
+<h1 id="deep-gp-big-picture">Deep GP: big picture</h1>
+
+<ul>
+<li>Model: based on a deep belief network.
+
+<ul>
+<li>Structure: cascade of hidden layers of latent variables.</li>
+<li>Output: data is modeled as the output of a multivariate GP (leaves of the hierarchy).</li>
+<li>Inputs: governed by another GP.</li>
+<li>Mapping: GPs.</li>
+<li>Layers:
+
+<ul>
+<li>Single layer:
+
+<ul>
+<li>Equivalent to standard (read vanilla) GP if inputs are observed (e.g. regression, supervised learning) and fed to the upper most layer.</li>
+<li>Equivalent to GP-LVM if inputs are treated as latent (e.g. unsupervised learning) and marginalized out.
+
+<ul>
+<li>Inference: as marginalization is analytically intractable, we maximize w.r.t. the latent variables instead of the parameters that will later be marginalized.</li>
+</ul></li>
+</ul></li>
+<li>Multiple layers.</li>
+</ul></li>
+<li>Inference: approximate variational marginalization.</li>
+<li>Fully Bayesian inference (useful with both large and small datasets).</li>
+<li>Model selection:</li>
+<li>Tuning parameters: number of layers (depth), number of nodes per layer (width).</li>
+<li>Quantity: strict lower bound on the marginal likelihood computed by variational marginalization.</li>
+<li>Selection of size of the latent space:</li>
+<li>Neal (1996): using Automatic Relevance Determination.</li>
+<li>Damianou et al. (2011): placing a GP prior over the latent space (Bayesian Dinamical GP-LVM).</li>
+<li>Damianou et al. (2013): approximately marginalizing any number of hidden layers.</li>
+</ul></li>
+</ul>
+
+<h1 id="relationships-with-models-in-the-gp-family">Relationships with models in the GP family.</h1>
+
+<ul>
+<li>Standard GP:
+
+<ul>
+<li>Setting: regression and supervised learning.</li>
+<li>Data: set of input-output pairs.</li>
+<li>Model: unobserved, latent function generates the outputs given the inputs.</li>
+<li>Inference:
+
+<ul>
+<li>Goal: estimate an unobserved, latent function.</li>
+<li>Priors:
+
+<ul>
+<li>The GP is a nonparametric prior distribution over the latent function.</li>
+<li>The choice of covariance function defines the properties of the latent mapping.</li>
+</ul></li>
+<li>Likelihood: assuming that the collection of latent function instantiations is normally distributed, the likelihood of the outputs given the inputs (marginalizing out for the latent functions) can be computed analytically.</li>
+</ul></li>
+</ul></li>
+<li>GP Latent Variable Model (GPLVM):
+
+<ul>
+<li>Setting: unsupervised learning.</li>
+<li>Data: set of outputs.</li>
+<li>Model: unobserved, latent function generates the outputs given unobserved, latent inputs.</li>
+<li>Inference:
+
+<ul>
+<li>Goal: estimate an unobserved, latent function.</li>
+<li>Priors:
+
+<ul>
+<li>Independent GPs as prior distribution over the latent function.</li>
+<li>Priors over the latent variables?
+<br /></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="deep-gaussian-processes">Deep Gaussian Processes</h1>
+
+<p>The article explore Deep Gaussian Processes for unsupervised learning in more detailed, but claims it is true for regression and supervised learning</p>
+
+<ul>
+<li>Setting: regression, supervised and unsupervised learning.</li>
+<li>Data: set of input-output pairs.</li>
+<li>Model: graphical model with three kind of nodes.
+
+<ul>
+<li>Leaf nodes: observed outputs.</li>
+<li>Intermediate latent space.
+
+<ul>
+<li>Extended vertically by adding layers.</li>
+<li>Extended horizontally by partitioning the output space of each layer.</li>
+</ul></li>
+<li>Parent nodes:</li>
+<li>Unobserved, potentially constrained with priors (e.g. dynamical priors) for unsupervised learning.</li>
+<li>Observed, given inputs for regression or supervised learning.</li>
+</ul></li>
+<li>Inference:
+
+<ul>
+<li>Challenges:</li>
+<li>Each layers adds a significant number of model parameters.</li>
+<li>Large regularization challenge.</li>
+<li>Proposed method: marginalize out the whole latent space.</li>
+<li>Motivation:</li>
+<li>Occam&rsquo;s razor.</li>
+<li>Lower the number of model parameters.</li>
+<li>Implementation:
+
+<ul>
+<li>Define an automatic relevance determination covariance function with a different weight for each latent dimension.</li>
+<li>Regularization: use Bayesian inference to <em>switch-off</em> irrelevant dimensions in the latent space.</li>
+<li>Bayesian inference is hard due to nonlinearities in the covariance function (when is Bayesian inference easy these days, anyway?).</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><strong>WIP</strong>: Summary of section 2.3. with details about inference is missing.</p>
+
+<!--
+# Other 
+  * A vanilla GP is equivallent to a multilayer perceptron (MLP) with infinite units in the hidden layer when some conditions hold.
+  * Hierarchical GP-LVM is a MAP for learning Deep GP models.
+  * RBM (__TODO__).
+-->
+
+  </div>
+
+  <footer>
+    <ul class="stats">
+  <li class="categories">
+    <ul>
+        
+            
+            
+                <i class="fa fa-folder"></i>
+                
+                
+                <li><a class="article-category-link" href="/categories/machine-learning">Machine Learning</a></li>
+                
+            
+        
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+        
+    </ul>
+  </li>
+</ul>
+
+  </footer>
+
+</article>
+
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="/blog/feature-engineering-for-machine-learning/"
+                class="button big previous">Feature engineering for machine learning</a></li>
+    
+
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/img/main/alf.jpeg" class="intro-circle" width="50%" alt="Alf on the phone." /></a>
+      
+    
+    
+      <header>
+        <h2>Luis Damiano</h2>
+        <p>Ph.D. Student in Stats Iowa State University</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          
+    <li><a href="/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a></li>
+
+
+        
+        
+  <li><a href="//github.com/luisdamiano" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/luis-damiano-9142611a" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/ldamiano0" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//orcid.org/0000-0001-9107-0706" target="_blank" title="ORCID"><i class="ai ai-orcid"></i></a></li>
+
+
+
+
+
+  <li><a href="mailto:ldamiano@iastate.edu" title="Email" class="fa fa-envelope"></a></li>
+
+
+      </ul>
+    
+  </section>
+
+  
+  <section class="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/deep-gps-summary-of-deep-gaussian-processes-by-damianou-lawerence-2013/">Deep GPs: summary of Deep Gaussian Processes by Damianou &amp; Lawerence (2013)</a>
+              </h3>
+              
+              <time class="published" datetime='2019-10-04'>
+                October 4, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/feature-engineering-for-machine-learning/">Feature engineering for machine learning</a>
+              </h3>
+              
+              <time class="published" datetime='2019-07-12'>
+                July 12, 2019
+              </time>
+            </header>
+            
+
+          </article>
+        
+      </div>
+
+      
+    </div>
+  </section>
+
+  
+  
+  
+
+  
+  
+
+  
+  <section id="footer">
+    
+    <p class="copyright">
+      
+        &copy; 2019
+        
+          Luis Damiano
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+      
+      
+      
+        <script src="//stackpath.bootstrapcdn.com/highlight.js/9.11.0/highlight.min.js"></script>
+        
+        
+        
+        <script src="//stackpath.bootstrapcdn.com/highlight.js/9.11.0/languages/r.min.js"></script>
+        <script src="//stackpath.bootstrapcdn.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+        <script src="//stackpath.bootstrapcdn.com/highlight.js/9.11.0/languages/css.min.js"></script>
+        <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+      
+    
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+      <script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config"> 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+
+  </body>
+</html>
+
