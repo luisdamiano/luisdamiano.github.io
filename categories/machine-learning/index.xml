@@ -6,10 +6,21 @@
     <description>Recent content in Machine Learning on Luis Damiano</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 12 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deep GPs: summary of Deep Gaussian Processes by Damiano &amp; Lawerence (2013)</title>
+      <link>/blog/deep-gps-summary-of-deep-gaussian-processes-by-damiano-lawerence-2013/</link>
+      <pubDate>Fri, 04 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/deep-gps-summary-of-deep-gaussian-processes-by-damiano-lawerence-2013/</guid>
+      <description>This is a quick, math-free summary of Deep Gaussian Processes by Damiano &amp;amp; Lawrence (2013). Many details are purposedly left out to lighten the read, see the full paper.
+Disclaimer: As this is a first draft that has not been fully edited yet, watch out for errors, inaccuracies, and unfortunate choices of technical vocabulary. Let me know if you find any of these and I&amp;rsquo;ll get them fixed.
+About the article  Main idea: introduce GP Gaussian Processes for learning tasks.</description>
+    </item>
     
     <item>
       <title>Feature engineering for machine learning</title>
