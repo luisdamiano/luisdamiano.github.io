@@ -1,0 +1,3080 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-13 Thu 15:51 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Knowledge Base</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Luis Damiano" />
+<meta name="description" content="Luis Damiano Knowledge Base, Tips &amp; Tricks, gotchas"
+ />
+<meta name="keywords" content="syntax, quick reference, cheat sheet, recommended practices best practices, don't repeat yourself, automation" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<style>
+h2{ border-top: 2px solid black }
+ul.org-ul, ol.org-ol { font-size:16px }
+</style>
+<style type="text/css">
+ pre.src {background-color: #282a36; color: #f8f8f2;}</style>
+<style type="text/css">
+ pre.src {background-color: #282a36; color: #f8f8f2;}</style>
+<style type="text/css">
+ pre.src {background-color: #282a36; color: #f8f8f2;}</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Knowledge Base</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#Motivation">1. Motivation</a></li>
+<li><a href="#Linux">2. Linux</a>
+<ul>
+<li><a href="#Arch%20Linux">2.1. Arch Linux</a>
+<ul>
+<li><a href="#How%20to%20update%20pacman%20mirrors%3F">2.1.1. How to update pacman mirrors?</a></li>
+</ul>
+</li>
+<li><a href="#Bash">2.2. Bash</a>
+<ul>
+<li><a href="#How%20to%20execute%20a%20loop%20conditionally%20%28dry%20runs%29">2.2.1. How to execute a loop conditionally (dry runs)</a></li>
+<li><a href="#How%20to%20open%20the%20N%20most%20recently%20modified%20files%3F">2.2.2. How to open the N most recently modified files?</a></li>
+</ul>
+</li>
+<li><a href="#Linux--Linux">2.3. Linux</a>
+<ul>
+<li><a href="#How%20to%20find%20and%20copy%20all%20files%20that%20match%20a%20regex%3F">2.3.1. How to find and copy all files that match a regex?</a></li>
+<li><a href="#How%20to%20list%20all%20files%20whose%20content%20match%20a%20regex%3F">2.3.2. How to list all files whose content match a regex?</a></li>
+<li><a href="#How%20to%20list%20memory%20used%20by%20processes%20in%20remote%20cluster%3F">2.3.3. How to list memory used by processes in remote cluster?</a></li>
+<li><a href="#What%20is%20the%20keycode%20of%20this%20key%3F">2.3.4. What is the keycode of this key?</a></li>
+<li><a href="#How%20to%20find%20the%20window%20dimension%20and%20position%3F">2.3.5. How to find the window dimension and position?</a></li>
+<li><a href="#How%20to%20convert%20a%20pdf%20to%20png%3F">2.3.6. How to convert a pdf to png?</a></li>
+</ul>
+</li>
+<li><a href="#Math%20typing">2.4. Math typing</a>
+<ul>
+<li><a href="#Math%20keyboard%20layout%20with%20UTF-8%20support">2.4.1. Math keyboard layout with UTF-8 support</a></li>
+<li><a href="#Compose%20key%20for%20mathematics">2.4.2. Compose key for mathematics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Utilities">3. Utilities</a>
+<ul>
+<li><a href="#Git">3.1. Git</a>
+<ul>
+<li><a href="#What%20to%20do%20with%20a%20branch%20after%20merging%3F">3.1.1. What to do with a branch after merging?</a></li>
+<li><a href="#How%20to%20list%20unmodified%20files%3F">3.1.2. How to list unmodified files?</a></li>
+<li><a href="#How%20to%20clean%20a%20git%20repo%3F">3.1.3. How to clean a git repo?</a></li>
+<li><a href="#How%20to%20change%20a%20git%20repo%20remote%20from%20https%20to%20ssh%3F">3.1.4. How to change a git repo remote from https to ssh?</a></li>
+<li><a href="#How%20to%20clean%20a%20.git%20folder%20that%20is%20too%20large%3F">3.1.5. How to clean a .git folder that is too large?</a></li>
+<li><a href="#How%20to%20stash%20files%20that%20were%20deleted%20from%20disk%3F">3.1.6. How to stash files that were deleted from disk?</a></li>
+<li><a href="#How%20to%20revert%20file%20removal%20from%20git%20repo%3F">3.1.7. How to revert file removal from git repo?</a></li>
+</ul>
+</li>
+<li><a href="#SSH">3.2. SSH</a>
+<ul>
+<li><a href="#How%20to%20generate%20a%20new%20SSH%20key%3F">3.2.1. How to generate a new SSH key?</a></li>
+<li><a href="#How%20to%20avoid%20logging%20in%20remotely%20many%20times%3F">3.2.2. How to avoid logging in remotely many times?</a></li>
+<li><a href="#How%20to%20avoid%20typing%20remote%20addresses%20and%20ports%3F">3.2.3. How to avoid typing remote addresses and ports?</a></li>
+<li><a href="#Quality%20of%20life%20improvements">3.2.4. Quality of life improvements</a></li>
+</ul>
+</li>
+<li><a href="#Regular%20expressions">3.3. Regular expressions</a>
+<ul>
+<li><a href="#How%20to%20match%20all%20R%20dependencies%3F">3.3.1. How to match all R dependencies?</a></li>
+<li><a href="#How%20to%20match%20any%20number%20with%20decimals%20up%20to%2010%3F">3.3.2. How to match any number with decimals up to 10?</a></li>
+<li><a href="#How%20to%20generate%20a%20string%20that%20matches%20a%20regular%20expression%3F">3.3.3. How to generate a string that matches a regular expression?</a></li>
+<li><a href="#General%20resources">3.3.4. General resources</a></li>
+</ul>
+</li>
+<li><a href="#PDF%20processing">3.4. PDF processing</a></li>
+<li><a href="#Hugo">3.5. Hugo</a>
+<ul>
+<li><a href="#How%20to%20set%20%3Dtarget%3D_blank%3D%20for%20all%20external%20links%3F">3.5.1. How to set <code>target=_blank</code> for all external links?</a></li>
+<li><a href="#How%20to%20set%20the%20home%20page%20to%20other%20content%3F">3.5.2. How to set the home page to other content?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Typesetting">4. Typesetting</a>
+<ul>
+<li><a href="#%28La%29TeX">4.1. (La)TeX</a>
+<ul>
+<li><a href="#How%20to%20write%20better%20LaTeX%3F">4.1.1. How to write better LaTeX?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="guidelines">guidelines</span></span></a></li>
+<li><a href="#How%20to%20avoid%20orphan%20words%3F">4.1.2. How to avoid orphan words?</a></li>
+<li><a href="#When%20should%20I%20use%20non-breaking%20space%20%28tilde%29%3F">4.1.3. When should I use non-breaking space (tilde)?</a></li>
+<li><a href="#How%20to%20write%20an%20unnumbered%20footnote%3F">4.1.4. How to write an unnumbered footnote?</a></li>
+<li><a href="#What%20symbol%20should%20I%20use%20for%20...%20%3F">4.1.5. What symbol should I use for &#x2026; ?</a></li>
+<li><a href="#Symbol%20lookup">4.1.6. Symbol lookup</a></li>
+<li><a href="#How%20to%20debug%20the%20LaTeX%20document%20layout%2C%20sizes%2C%20and%20spacing%3F">4.1.7. How to debug the LaTeX document layout, sizes, and spacing?</a></li>
+<li><a href="#What%20is%20the%20document%20body%20ratio%3F">4.1.8. What is the document body ratio?</a></li>
+<li><a href="#How%20to%20reduce%20spacing%20around%20figures%2C%20tables%2C%20captions%3F">4.1.9. How to reduce spacing around figures, tables, captions?</a></li>
+<li><a href="#How%20to%20influence%20the%20position%20of%20a%20figure%2Ftable%3F">4.1.10. How to influence the position of a figure/table?</a></li>
+<li><a href="#How%20to%20fiddle%20with%20math%20font%20height%20and%20width%3F">4.1.11. How to fiddle with math font height and width?</a></li>
+<li><a href="#How%20to%20set%20a%20global%20path%20for%20input%20and%20graphic%20files%3F">4.1.12. How to set a global path for input and graphic files?</a></li>
+<li><a href="#How%20to%20align%20table%20columns%20without%20counting%20them%3F">4.1.13. How to align table columns without counting them?</a></li>
+<li><a href="#How%20to%20add%20the%20%28sub%29section%20name%20in%20the%20page%20header%3F">4.1.14. How to add the (sub)section name in the page header?</a></li>
+<li><a href="#How%20to%20hide%20section%20headings%3F">4.1.15. How to hide section headings?</a></li>
+<li><a href="#How%20to%20change%20the%20caption%20font%20size%3F">4.1.16. How to change the caption font size?</a></li>
+<li><a href="#How%20to%20make%20GitHub%20compile%20a%20document%20after%20a%20push%3F">4.1.17. How to make GitHub compile a document after a push?</a></li>
+<li><a href="#Resources">4.1.18. Resources</a></li>
+</ul>
+</li>
+<li><a href="#Beamer">4.2. Beamer</a>
+<ul>
+<li><a href="#How%20to%20build%20a%20Beamer%20template%3F">4.2.1. How to build a Beamer template?</a></li>
+</ul>
+</li>
+<li><a href="#Graph%20diagrams">4.3. Graph diagrams</a>
+<ul>
+<li><a href="#Graphviz">4.3.1. Graphviz</a></li>
+<li><a href="#PGF%2FTikZ">4.3.2. PGF/TikZ</a></li>
+</ul>
+</li>
+<li><a href="#Biblatex">4.4. Biblatex</a></li>
+<li><a href="#Reference%20management">4.5. Reference management</a></li>
+</ul>
+</li>
+<li><a href="#Text%20editors">5. Text editors</a>
+<ul>
+<li><a href="#Emacs">5.1. Emacs</a>
+<ul>
+<li><a href="#How%20to%20open%20all%20files%20by%20pattern%3F">5.1.1. How to open all files by pattern?</a></li>
+<li><a href="#How%20to%20profile%20settings%3F">5.1.2. How to profile settings?</a></li>
+<li><a href="#Useful%20modes">5.1.3. Useful modes</a></li>
+<li><a href="#Emacs%20packages%20worth%20checking">5.1.4. Emacs packages worth checking</a></li>
+</ul>
+</li>
+<li><a href="#Org-mode">5.2. Org-mode</a></li>
+<li><a href="#Elisp">5.3. Elisp</a>
+<ul>
+<li><a href="#Where%20to%20start%20with%20elisp%3F">5.3.1. Where to start with elisp?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Programming">6. Programming</a>
+<ul>
+<li><a href="#Programming%20fonts">6.1. Programming fonts</a></li>
+<li><a href="#Project%20structure">6.2. Project structure</a></li>
+<li><a href="#Functional%20programming">6.3. Functional programming</a>
+<ul>
+<li><a href="#Concepts">6.3.1. Concepts</a></li>
+<li><a href="#Functional%20design%20patterns">6.3.2. Functional design patterns</a></li>
+<li><a href="#General">6.3.3. General</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#R%20programming">7. R programming</a>
+<ul>
+<li><a href="#Write%20better%20R">7.1. Write better R</a>
+<ul>
+<li><a href="#Non-standard%20evaluation">7.1.1. Non-standard evaluation</a></li>
+<li><a href="#R%20is%20functional">7.1.2. R is functional</a></li>
+<li><a href="#R%20has%20dynamic%20binding">7.1.3. R has dynamic binding</a></li>
+</ul>
+</li>
+<li><a href="#R%20programming--R%20programming">7.2. R programming</a>
+<ul>
+<li><a href="#How%20to%20add%20a%20hook%20to%20a%20function%20call%3F">7.2.1. How to add a hook to a function call?</a></li>
+<li><a href="#How%20to%20renumber%20a%20group%3F">7.2.2. How to renumber a group?</a></li>
+<li><a href="#How%20to%20make%20a%20cross%20table%20with%20a%20custom%20function%20%28e.g.%2C%20mean%29%3F">7.2.3. How to make a cross table with a custom function (e.g., mean)?</a></li>
+<li><a href="#How%20to%20make%20lapply%20return%20a%20data.frame%3F">7.2.4. How to make lapply return a data.frame?</a></li>
+<li><a href="#How%20to%20split%20a%20matrix%20row-wise%20as%20a%20list%3F">7.2.5. How to split a matrix row-wise as a list?</a></li>
+<li><a href="#Look%20up%20a%20value%20among%20possibilities%3F">7.2.6. Look up a value among possibilities?</a></li>
+<li><a href="#How%20to%20remove%20columns%20with%20all%20NA%20fast%3F">7.2.7. How to remove columns with all NA fast?</a></li>
+<li><a href="#How%20to%20fast%20subset%20rows%20corresponding%20to%20max%20value%20by%20group%3F">7.2.8. How to fast subset rows corresponding to max value by group?</a></li>
+<li><a href="#How%20to%20create%20named%20vector%20programatically%20in%20one%20statement%3F">7.2.9. How to create named vector programatically in one statement?</a></li>
+<li><a href="#How%20to%20get%20all%20function%20call%20arguments%20as%20a%20list%3F">7.2.10. How to get all function call arguments as a list?</a></li>
+<li><a href="#How%20to%20debug%20an%20error%20thrown%20in%20a%20package%3F">7.2.11. How to debug an error thrown in a package?</a></li>
+<li><a href="#How%20to%20draw%20a%20plot%20with%20minimal%20margins%3F">7.2.12. How to draw a plot with minimal margins?</a></li>
+<li><a href="#How%20to%20plot%20in%20log%20scale%20with%20base%20R%3F">7.2.13. How to plot in log scale with base R?</a></li>
+<li><a href="#How%20to%20fine%20tune%20R%20plot%20margins%3F">7.2.14. How to fine tune R plot margins?</a></li>
+<li><a href="#How%20to%20make%20beautiful%20plots%20with%20base%20R%3F">7.2.15. How to make beautiful plots with base R?</a></li>
+<li><a href="#R%20programming--Resources">7.2.16. Resources</a></li>
+</ul>
+</li>
+<li><a href="#RStudio">7.3. RStudio</a>
+<ul>
+<li><a href="#Should%20.Rproj%20files%20be%20added%20to%20.gitignore%3F">7.3.1. Should .Rproj files be added to .gitignore?</a></li>
+<li><a href="#How%20to%20order%20lines%20alphabetically%3F">7.3.2. How to order lines alphabetically?</a></li>
+<li><a href="#How%20to%20align%20assignment%20or%20equal%20symbols%20across%20lines%3F">7.3.3. How to align assignment or equal symbols across lines?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Stan%20programming">8. Stan programming</a>
+<ul>
+<li><a href="#Stan">8.1. Stan</a>
+<ul>
+<li><a href="#How%20do%20I%20choose%20between%20%3Dtransformed%20parameters%3D%20vs%20%3Dmodel%3D%20blocks%3F">8.1.1. How do I choose between <code>transformed parameters</code> vs <code>model</code> blocks?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Data%20science">9. Data science</a>
+<ul>
+<li><a href="#Data%20backup">9.1. Data backup</a>
+<ul>
+<li><a href="#What%20software%20backup%20should%20I%20use%3F">9.1.1. What software backup should I use?</a></li>
+<li><a href="#How%20to%20mark%20a%20folder%20not%20to%20be%20backed%20up%3F">9.1.2. How to mark a folder not to be backed up?</a></li>
+</ul>
+</li>
+<li><a href="#Data%20processing">9.2. Data processing</a>
+<ul>
+<li><a href="#GNU%20Make">9.2.1. GNU Make</a></li>
+<li><a href="#Pipeline%20automation">9.2.2. Pipeline automation</a></li>
+<li><a href="#How%20to%20view%20tabular%20data%3F">9.2.3. How to view tabular data?</a></li>
+<li><a href="#ETL%20cycle">9.2.4. ETL cycle</a></li>
+<li><a href="#Workflow%20for%20statistical%20analysis%20and%20report%20writing">9.2.5. Workflow for statistical analysis and report writing</a></li>
+</ul>
+</li>
+<li><a href="#A%20typical%20workflow">9.3. A typical workflow</a></li>
+<li><a href="#Data%20visualization">9.4. Data visualization</a>
+<ul>
+<li><a href="#Color%20palette">9.4.1. Color palette</a></li>
+<li><a href="#Data%20visualization--Resources">9.4.2. Resources</a></li>
+</ul>
+</li>
+<li><a href="#High%20power%20computing">9.5. High power computing</a>
+<ul>
+<li><a href="#How%20to%20nicely%20list%20all%20my%20jobs%20in%20Slurm%3F">9.5.1. How to nicely list all my jobs in Slurm?</a></li>
+</ul>
+</li>
+<li><a href="#Naming%20convention">9.6. Naming convention</a>
+<ul>
+<li><a href="#Common%20guidelines">9.6.1. Common guidelines</a></li>
+<li><a href="#Keywords">9.6.2. Keywords</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Statistics">10. Statistics</a>
+<ul>
+<li><a href="#Statistics--Statistics">10.1. Statistics</a>
+<ul>
+<li><a href="#Principal%20Component%20Regression">10.1.1. Principal Component Regression</a></li>
+<li><a href="#How%20to%20revert%20SVD%3F">10.1.2. How to revert SVD?</a></li>
+<li><a href="#Priors">10.1.3. Priors</a></li>
+<li><a href="#MCMC">10.1.4. MCMC</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Mathematics">11. Mathematics</a>
+<ul>
+<li><a href="#Math">11.1. Math</a>
+<ul>
+<li><a href="#Linear%20algebra">11.1.1. Linear algebra</a></li>
+<li><a href="#Optimization">11.1.2. Optimization</a></li>
+<li><a href="#Other%20references">11.1.3. Other references</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Science">12. Science</a>
+<ul>
+<li><a href="#Scientific%20communication">12.1. Scientific communication</a>
+<ul>
+<li><a href="#Scientific%20communication--General%20resources">12.1.1. General resources</a></li>
+<li><a href="#My%20own%20common%20tics%20to%20grep%20for">12.1.2. My own common tics to grep for</a></li>
+<li><a href="#No%20adjectives%20allowed">12.1.3. No adjectives allowed</a></li>
+<li><a href="#Use%20technical%20terms">12.1.4. Use technical terms</a></li>
+<li><a href="#Repeat%20the%20technical%20terms%20when%20in%20doubt">12.1.5. Repeat the technical terms when in doubt</a></li>
+<li><a href="#Attributive%20nouns">12.1.6. Attributive nouns</a></li>
+<li><a href="#Oral%20presentations">12.1.7. Oral presentations</a></li>
+</ul>
+</li>
+<li><a href="#Scientific%20programming">12.2. Scientific programming</a></li>
+<li><a href="#Research%20project">12.3. Research project</a></li>
+<li><a href="#Scientific%20writing">12.4. Scientific writing</a>
+<ul>
+<li><a href="#Tags">12.4.1. Tags</a></li>
+</ul>
+</li>
+<li><a href="#Numerical%20computing">12.5. Numerical computing</a>
+<ul>
+<li><a href="#How%20to%20select%20algorithm%20tolerance%20for%20numerical%20differentiation%3F">12.5.1. How to select algorithm tolerance for numerical differentiation?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#Motivation">1. Motivation</a></li>
+<li><a href="#Linux">2. Linux</a>
+<ul>
+<li><a href="#Arch%20Linux">2.1. Arch Linux</a></li>
+<li><a href="#Bash">2.2. Bash</a></li>
+<li><a href="#Linux--Linux">2.3. Linux</a></li>
+<li><a href="#Math%20typing">2.4. Math typing</a></li>
+</ul>
+</li>
+<li><a href="#Utilities">3. Utilities</a>
+<ul>
+<li><a href="#Git">3.1. Git</a></li>
+<li><a href="#SSH">3.2. SSH</a></li>
+<li><a href="#Regular%20expressions">3.3. Regular expressions</a></li>
+<li><a href="#PDF%20processing">3.4. PDF processing</a></li>
+<li><a href="#Hugo">3.5. Hugo</a></li>
+</ul>
+</li>
+<li><a href="#Typesetting">4. Typesetting</a>
+<ul>
+<li><a href="#%28La%29TeX">4.1. (La)TeX</a></li>
+<li><a href="#Beamer">4.2. Beamer</a></li>
+<li><a href="#Graph%20diagrams">4.3. Graph diagrams</a></li>
+<li><a href="#Biblatex">4.4. Biblatex</a></li>
+<li><a href="#Reference%20management">4.5. Reference management</a></li>
+</ul>
+</li>
+<li><a href="#Text%20editors">5. Text editors</a>
+<ul>
+<li><a href="#Emacs">5.1. Emacs</a></li>
+<li><a href="#Org-mode">5.2. Org-mode</a></li>
+<li><a href="#Elisp">5.3. Elisp</a></li>
+</ul>
+</li>
+<li><a href="#Programming">6. Programming</a>
+<ul>
+<li><a href="#Programming%20fonts">6.1. Programming fonts</a></li>
+<li><a href="#Project%20structure">6.2. Project structure</a></li>
+<li><a href="#Functional%20programming">6.3. Functional programming</a></li>
+</ul>
+</li>
+<li><a href="#R%20programming">7. R programming</a>
+<ul>
+<li><a href="#Write%20better%20R">7.1. Write better R</a></li>
+<li><a href="#R%20programming--R%20programming">7.2. R programming</a></li>
+<li><a href="#RStudio">7.3. RStudio</a></li>
+</ul>
+</li>
+<li><a href="#Stan%20programming">8. Stan programming</a>
+<ul>
+<li><a href="#Stan">8.1. Stan</a></li>
+</ul>
+</li>
+<li><a href="#Data%20science">9. Data science</a>
+<ul>
+<li><a href="#Data%20backup">9.1. Data backup</a></li>
+<li><a href="#Data%20processing">9.2. Data processing</a></li>
+<li><a href="#A%20typical%20workflow">9.3. A typical workflow</a></li>
+<li><a href="#Data%20visualization">9.4. Data visualization</a></li>
+<li><a href="#High%20power%20computing">9.5. High power computing</a></li>
+<li><a href="#Naming%20convention">9.6. Naming convention</a></li>
+</ul>
+</li>
+<li><a href="#Statistics">10. Statistics</a>
+<ul>
+<li><a href="#Statistics--Statistics">10.1. Statistics</a></li>
+</ul>
+</li>
+<li><a href="#Mathematics">11. Mathematics</a>
+<ul>
+<li><a href="#Math">11.1. Math</a></li>
+</ul>
+</li>
+<li><a href="#Science">12. Science</a>
+<ul>
+<li><a href="#Scientific%20communication">12.1. Scientific communication</a></li>
+<li><a href="#Scientific%20programming">12.2. Scientific programming</a></li>
+<li><a href="#Research%20project">12.3. Research project</a></li>
+<li><a href="#Scientific%20writing">12.4. Scientific writing</a></li>
+<li><a href="#Numerical%20computing">12.5. Numerical computing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+Tips &amp; tricks
+</p>
+
+<p>
+My ultimate gotcha personal collection
+</p>
+
+<p>
+Stuff I keep forgetting and I need to think about, decide on, or
+search for too often
+</p>
+
+<div id="outline-container-Motivation" class="outline-2">
+<h2 id="Motivation"><span class="section-number-2">1</span> Motivation</h2>
+<div class="outline-text-2" id="text-1">
+<blockquote>
+<p>
+This is the way (The Mandalorian)
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+A power user might not have extensive technical knowledge of the
+systems they use but is rather characterized by competence or desire
+to make the most intensive use of computer programs or systems (<a href="https://en.wikipedia.org/wiki/Power_user">Wikipedia</a>)
+</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-Linux" class="outline-2">
+<h2 id="Linux"><span class="section-number-2">2</span> Linux</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-Arch%20Linux" class="outline-3">
+<h3 id="Arch%20Linux"><span class="section-number-3">2.1</span> Arch Linux</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-How%20to%20update%20pacman%20mirrors%3F" class="outline-4">
+<h4 id="How%20to%20update%20pacman%20mirrors%3F"><span class="section-number-4">2.1.1</span> How to update pacman mirrors?</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #a49462;"># </span><span style="color: #a49462;">https://github.com/westandskif/rate-mirrors#usage</span>
+<span style="color: #ffb86c;">export</span> <span style="color: #f8f8f2; font-weight: bold;">TMPFILE</span>=<span style="color: #f1fa8c;">"$(</span><span style="color: #fa8072;">mktemp</span><span style="color: #f1fa8c;">)"</span>; <span style="color: #f1fa8c;">\</span>
+    sudo true; <span style="color: #f1fa8c;">\</span>
+    rate-mirrors --save=$<span style="color: #f8f8f2; font-weight: bold;">TMPFILE</span> arch --max-delay=21600 <span style="color: #f1fa8c;">\</span>
+        &amp;&amp; sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup <span style="color: #f1fa8c;">\</span>
+        &amp;&amp; sudo mv $<span style="color: #f8f8f2; font-weight: bold;">TMPFILE</span> /etc/pacman.d/mirrorlist
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><a href="https://archlinux.org/mirrorlist/">Pacman Mirrorlist Generator</a></li>
+<li><a href="https://wiki.archlinux.org/title/reflector">Reflector</a>: retrieve, filter, sort by speed, and overwrite mirror list</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-Bash" class="outline-3">
+<h3 id="Bash"><span class="section-number-3">2.2</span> Bash</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li><a href="https://devhints.io/bash">Bash scripting cheatsheet</a></li>
+<li><a href="https://tldp.org/LDP/abs/html/">Advanced Bash-Scripting Guide</a>: an in-depth exploration of the art
+of shell scripting</li>
+<li><a href="https://github.com/dylanaraps/pure-bash-bible">pure bash bible</a>: a collection of pure bash alternatives to
+external processes</li>
+<li><a href="https://mywiki.wooledge.org/BashFAQ">BashFAQ</a>: do <b>not</b> sleep on this, it's a gold mine</li>
+</ul>
+</div>
+
+<div id="outline-container-How%20to%20execute%20a%20loop%20conditionally%20%28dry%20runs%29" class="outline-4">
+<h4 id="How%20to%20execute%20a%20loop%20conditionally%20%28dry%20runs%29"><span class="section-number-4">2.2.1</span> How to execute a loop conditionally (dry runs)</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #a49462;">#</span><span style="color: #a49462;">!/bin/</span><span style="color: #ff79c6; font-weight: bold;">bash</span>
+<span style="color: #f8f8f2; font-weight: bold;">doit</span>=0
+
+<span style="color: #ff79c6; font-weight: bold;">for</span> i<span style="color: #ff79c6; font-weight: bold;"> in</span> {1..3}; <span style="color: #ff79c6; font-weight: bold;">do</span>
+    <span style="color: #ffb86c;">echo</span> -n ${<span style="color: #f8f8f2; font-weight: bold;">i</span>}
+<span style="color: #ff79c6; font-weight: bold;">done</span>
+
+<span style="color: #ffb86c;">echo</span> <span style="color: #f1fa8c;">"---"</span>
+
+<span style="color: #ff79c6; font-weight: bold;">for</span> i<span style="color: #ff79c6; font-weight: bold;"> in</span> {1..3}; <span style="color: #ff79c6; font-weight: bold;">do</span>
+    ((doit))&amp;&amp;(<span style="color: #ffb86c;">echo</span> -n ${<span style="color: #f8f8f2; font-weight: bold;">i</span>})
+<span style="color: #ff79c6; font-weight: bold;">done</span>
+
+<span style="color: #ffb86c;">echo</span> <span style="color: #f1fa8c;">"---"</span>
+
+<span style="color: #ff79c6; font-weight: bold;">for</span> i<span style="color: #ff79c6; font-weight: bold;"> in</span> {1..3}; <span style="color: #ff79c6; font-weight: bold;">do</span>
+    ((doit))&amp;&amp;<span style="color: #ffb86c;">echo</span> -n ${<span style="color: #f8f8f2; font-weight: bold;">i</span>}
+<span style="color: #ff79c6; font-weight: bold;">done</span>
+
+<span style="color: #ffb86c;">echo</span> <span style="color: #f1fa8c;">"---"</span>
+
+((doit))&amp;&amp;<span style="color: #ff79c6; font-weight: bold;">for</span> i<span style="color: #ff79c6; font-weight: bold;"> in</span> {1..3}; <span style="color: #ff79c6; font-weight: bold;">do</span>
+    <span style="color: #ffb86c;">echo</span> -n ${<span style="color: #f8f8f2; font-weight: bold;">i</span>}
+<span style="color: #ff79c6; font-weight: bold;">done</span>
+
+<span style="color: #ffb86c;">echo</span> <span style="color: #f1fa8c;">"---"</span>
+
+((doit))&amp;&amp;
+    <span style="color: #ff79c6; font-weight: bold;">for</span> i<span style="color: #ff79c6; font-weight: bold;"> in</span> {1..3}; <span style="color: #ff79c6; font-weight: bold;">do</span>
+        <span style="color: #ffb86c;">echo</span> -n ${<span style="color: #f8f8f2; font-weight: bold;">i</span>}
+    <span style="color: #ff79c6; font-weight: bold;">done</span>
+
+<span style="color: #ffb86c;">echo</span> <span style="color: #f1fa8c;">"---"</span>
+</pre>
+</div>
+
+<p>
+Also <code>((dontdoit))!!echo "something"</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20open%20the%20N%20most%20recently%20modified%20files%3F" class="outline-4">
+<h4 id="How%20to%20open%20the%20N%20most%20recently%20modified%20files%3F"><span class="section-number-4">2.2.2</span> How to open the N most recently modified files?</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<pre class="example">
+emacs $(/bin/ls */* --sort=time | tail -n 5)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-Linux--Linux" class="outline-3">
+<h3 id="Linux--Linux"><span class="section-number-3">2.3</span> Linux</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-How%20to%20find%20and%20copy%20all%20files%20that%20match%20a%20regex%3F" class="outline-4">
+<h4 id="How%20to%20find%20and%20copy%20all%20files%20that%20match%20a%20regex%3F"><span class="section-number-4">2.3.1</span> How to find and copy all files that match a regex?</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Use <code>rsync --parent</code> to keep the folder structure.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">find -iname <span style="color: #f1fa8c;">'*.rds'</span> -exec cp {} <span style="color: #ffb86c;">.</span> <span style="color: #f1fa8c;">\;</span>
+find -iname <span style="color: #f1fa8c;">'*.rds'</span> -exec rsync --parent {} <span style="color: #ffb86c;">.</span> <span style="color: #f1fa8c;">\;</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20list%20all%20files%20whose%20content%20match%20a%20regex%3F" class="outline-4">
+<h4 id="How%20to%20list%20all%20files%20whose%20content%20match%20a%20regex%3F"><span class="section-number-4">2.3.2</span> How to list all files whose content match a regex?</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<div class="org-src-container">
+<pre class="src src-shell">find . -exec grep optimHess {} +
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20list%20memory%20used%20by%20processes%20in%20remote%20cluster%3F" class="outline-4">
+<h4 id="How%20to%20list%20memory%20used%20by%20processes%20in%20remote%20cluster%3F"><span class="section-number-4">2.3.3</span> How to list memory used by processes in remote cluster?</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #a49462;">#</span><span style="color: #a49462;">!/bin/</span><span style="color: #ff79c6; font-weight: bold;">sh</span>
+squeue --me -o <span style="color: #f1fa8c;">"%R"</span> | 
+    <span style="color: #ff79c6; font-weight: bold;">while </span><span style="color: #ffb86c;">read</span> -r host; <span style="color: #ff79c6; font-weight: bold;">do</span>
+        ssh -n
+        <span style="color: #f1fa8c;">"$host"</span> <span style="color: #f1fa8c;">"ps -o pid,user,%mem,rss,size,%cpu,command ax | grep \"r-4\""</span>; 
+    <span style="color: #ff79c6; font-weight: bold;">done</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-What%20is%20the%20keycode%20of%20this%20key%3F" class="outline-4">
+<h4 id="What%20is%20the%20keycode%20of%20this%20key%3F"><span class="section-number-4">2.3.4</span> What is the keycode of this key?</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<p>
+Use <code>xev</code> to look for the keycode and keysym in the KeyPress or
+KeyRelease event
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20find%20the%20window%20dimension%20and%20position%3F" class="outline-4">
+<h4 id="How%20to%20find%20the%20window%20dimension%20and%20position%3F"><span class="section-number-4">2.3.5</span> How to find the window dimension and position?</h4>
+<div class="outline-text-4" id="text-2-3-5">
+<p>
+Run <code>xwininfo</code> on a console and click on the target window.
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20convert%20a%20pdf%20to%20png%3F" class="outline-4">
+<h4 id="How%20to%20convert%20a%20pdf%20to%20png%3F"><span class="section-number-4">2.3.6</span> How to convert a pdf to png?</h4>
+<div class="outline-text-4" id="text-2-3-6">
+<p>
+1920 (1080p) is often a good size
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #a49462;"># </span><span style="color: #FF0000;">TODO</span>
+</pre>
+</div>
+
+<p>
+<a href="https://unix.stackexchange.com/questions/121293/convert-every-pdf-in-the-current-directory-to-png">https://unix.stackexchange.com/questions/121293/convert-every-pdf-in-the-current-directory-to-png</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-Math%20typing" class="outline-3">
+<h3 id="Math%20typing"><span class="section-number-3">2.4</span> Math typing</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-Math%20keyboard%20layout%20with%20UTF-8%20support" class="outline-4">
+<h4 id="Math%20keyboard%20layout%20with%20UTF-8%20support"><span class="section-number-4">2.4.1</span> Math keyboard layout with UTF-8 support</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<ul class="org-ul">
+<li>Fork and change <a href="https://github.com/SV-97/Math-Layout/blob/master/gm">https://github.com/SV-97/Math-Layout/blob/master/gm</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Compose%20key%20for%20mathematics" class="outline-4">
+<h4 id="Compose%20key%20for%20mathematics"><span class="section-number-4">2.4.2</span> Compose key for mathematics</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<ul class="org-ul">
+<li>Type an equation in UTF8?</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Utilities" class="outline-2">
+<h2 id="Utilities"><span class="section-number-2">3</span> Utilities</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-Git" class="outline-3">
+<h3 id="Git"><span class="section-number-3">3.1</span> Git</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-What%20to%20do%20with%20a%20branch%20after%20merging%3F" class="outline-4">
+<h4 id="What%20to%20do%20with%20a%20branch%20after%20merging%3F"><span class="section-number-4">3.1.1</span> What to do with a branch after merging?</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+After the merge, it's safe to delete the branch
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git branch -d branch1
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/14005910/2860744">what to do with branch after merge?</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20list%20unmodified%20files%3F" class="outline-4">
+<h4 id="How%20to%20list%20unmodified%20files%3F"><span class="section-number-4">3.1.2</span> How to list unmodified files?</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<div class="org-src-container">
+<pre class="src src-shell">diff &lt;(git diff --name-only)  &lt;(git ls-files -- sub/dir) | grep <span style="color: #f1fa8c;">"^&gt;"</span> | cut -b3-
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/55419932/2860744">is there any way to list the unmodified files in Git?</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20clean%20a%20git%20repo%3F" class="outline-4">
+<h4 id="How%20to%20clean%20a%20git%20repo%3F"><span class="section-number-4">3.1.3</span> How to clean a git repo?</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<div class="org-src-container">
+<pre class="src src-shell">git clean -d -x -f
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/675797/2860744">how do I clear my local working directory in git?</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20change%20a%20git%20repo%20remote%20from%20https%20to%20ssh%3F" class="outline-4">
+<h4 id="How%20to%20change%20a%20git%20repo%20remote%20from%20https%20to%20ssh%3F"><span class="section-number-4">3.1.4</span> How to change a git repo remote from https to ssh?</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<div class="org-src-container">
+<pre class="src src-shell">git remote -v
+git remote set-url origin git@server:repo.git
+git remote -v
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20clean%20a%20.git%20folder%20that%20is%20too%20large%3F" class="outline-4">
+<h4 id="How%20to%20clean%20a%20.git%20folder%20that%20is%20too%20large%3F"><span class="section-number-4">3.1.5</span> How to clean a .git folder that is too large?</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<p>
+Call the garbage collector
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git gc
+</pre>
+</div>
+
+<p>
+For binary files that change often
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git repack -a -d --depth=250 --window=250
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/8483112/2860744">how to shrink the .git folder?</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20stash%20files%20that%20were%20deleted%20from%20disk%3F" class="outline-4">
+<h4 id="How%20to%20stash%20files%20that%20were%20deleted%20from%20disk%3F"><span class="section-number-4">3.1.6</span> How to stash files that were deleted from disk?</h4>
+<div class="outline-text-4" id="text-3-1-6">
+<div class="org-src-container">
+<pre class="src src-shell">git commit -a
+</pre>
+</div>
+
+<p>
+Source: <a href="https://git-scm.com/docs/git-rm#_using_git_commit_a">using git commit -a</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git ls-files --deleted -z | xargs -r0 git rm
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/63511405/2860744">staging deleted files</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20revert%20file%20removal%20from%20git%20repo%3F" class="outline-4">
+<h4 id="How%20to%20revert%20file%20removal%20from%20git%20repo%3F"><span class="section-number-4">3.1.7</span> How to revert file removal from git repo?</h4>
+<div class="outline-text-4" id="text-3-1-7">
+<p>
+To revert all changes since last commit
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git reset --hard HEAD
+</pre>
+</div>
+
+<p>
+To revert some changes
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">git reset
+git checkout &lt;file-name&gt;
+</pre>
+</div>
+
+<p>
+Source: <a href="https://www.w3docs.com/snippets/git/how-to-revert-git-rm-r.html">how to revert git rm -r</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-SSH" class="outline-3">
+<h3 id="SSH"><span class="section-number-3">3.2</span> SSH</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-How%20to%20generate%20a%20new%20SSH%20key%3F" class="outline-4">
+<h4 id="How%20to%20generate%20a%20new%20SSH%20key%3F"><span class="section-number-4">3.2.1</span> How to generate a new SSH key?</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+The path to the key has to be unique. Requires <code>x-clip</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #a49462;"># </span><span style="color: #a49462;">Generate a new key</span>
+ssh-keygen -t ed25519 -C <span style="color: #f1fa8c;">"your_email@example.com"</span>
+<span style="color: #a49462;"># </span><span style="color: #a49462;">Add key to the ssh-agent in your local machine </span>
+<span style="color: #ffb86c;">eval</span> <span style="color: #f1fa8c;">"$(</span><span style="color: #fa8072;">ssh-agent</span><span style="color: #f1fa8c;"> -s)"</span>
+ssh-add ~/.ssh/id_ed25519
+<span style="color: #a49462;"># </span><span style="color: #a49462;">Copy key to clipboard</span>
+xclip -selection clipboard &lt; ~/.ssh/id_ed25519.pub
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20avoid%20logging%20in%20remotely%20many%20times%3F" class="outline-4">
+<h4 id="How%20to%20avoid%20logging%20in%20remotely%20many%20times%3F"><span class="section-number-4">3.2.2</span> How to avoid logging in remotely many times?</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+Use <code>ControlMaster</code> in <code>.ssh/config</code>
+</p>
+
+<pre class="example">
+ControlMaster auto
+ControlPath ~/.ssh/%r@%h:%p
+</pre>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20avoid%20typing%20remote%20addresses%20and%20ports%3F" class="outline-4">
+<h4 id="How%20to%20avoid%20typing%20remote%20addresses%20and%20ports%3F"><span class="section-number-4">3.2.3</span> How to avoid typing remote addresses and ports?</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+Configure the host in <code>.ssh/config</code> once and do <code>ssh shortname</code>
+</p>
+
+<pre class="example">
+Host shortname
+User username
+HostName hostname
+Port 22
+ServerAliveInterval 60
+</pre>
+</div>
+</div>
+
+<div id="outline-container-Quality%20of%20life%20improvements" class="outline-4">
+<h4 id="Quality%20of%20life%20improvements"><span class="section-number-4">3.2.4</span> Quality of life improvements</h4>
+<div class="outline-text-4" id="text-3-2-4">
+<ul class="org-ul">
+<li><code>ssh/config</code> preconfigurations for shortening the ssh and sshfs
+invocations (see <a href="https://www.man7.org/linux/man-pages/man5/ssh_config.5.html">ssh_config</a>)</li>
+<li>autosf</li>
+<li>lazy mount for sshfs via systemd</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-Regular%20expressions" class="outline-3">
+<h3 id="Regular%20expressions"><span class="section-number-3">3.3</span> Regular expressions</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Gotta love them!
+</p>
+</div>
+
+<div id="outline-container-How%20to%20match%20all%20R%20dependencies%3F" class="outline-4">
+<h4 id="How%20to%20match%20all%20R%20dependencies%3F"><span class="section-number-4">3.3.1</span> How to match all R dependencies?</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<div class="org-src-container">
+<pre class="src src-shell">grep -Poh -r <span style="color: #f1fa8c;">"(\w+)::|(?:library|require|requireNamespace)\(\"?(\w+)\"?\)"</span> --include=<span style="color: #f1fa8c;">"*\.R"</span> | uniq -d -c | sort
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20match%20any%20number%20with%20decimals%20up%20to%2010%3F" class="outline-4">
+<h4 id="How%20to%20match%20any%20number%20with%20decimals%20up%20to%2010%3F"><span class="section-number-4">3.3.2</span> How to match any number with decimals up to 10?</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<pre class="example">
+^(?:\d|\d?\.\d+|10(?:\.0+)?)$
+</pre>
+
+<p>
+Source: <a href="https://regex101.com/r/kk8SIF/1/">https://regex101.com/r/kk8SIF/1/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20generate%20a%20string%20that%20matches%20a%20regular%20expression%3F" class="outline-4">
+<h4 id="How%20to%20generate%20a%20string%20that%20matches%20a%20regular%20expression%3F"><span class="section-number-4">3.3.3</span> How to generate a string that matches a regular expression?</h4>
+<div class="outline-text-4" id="text-3-3-3">
+<p>
+A <i>regex to string</i> kind of situation.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://onlinestringtools.com/generate-string-from-regex">onlinestringtools</a>: string from regex generator</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-General%20resources" class="outline-4">
+<h4 id="General%20resources"><span class="section-number-4">3.3.4</span> General resources</h4>
+<div class="outline-text-4" id="text-3-3-4">
+<ul class="org-ul">
+<li><a href="https://docs.microsoft.com/en-us/dotnet/standard/base-types/best-practices">Best practices for regular expressions</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-PDF%20processing" class="outline-3">
+<h3 id="PDF%20processing"><span class="section-number-3">3.4</span> PDF processing</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li><a href="https://github.com/tesseract-ocr/tesseract">Tesseract OCR</a>: neural net (LSTM) based OCR engine</li>
+<li>Use <a href="https://www.xpdfreader.com/pdftotext-man.html">pdftotext</a> instead of copying directly from a PDF</li>
+<li>Use <a href="https://wiki.archlinux.org/index.php/Ocrdesktop">OCRdesktop</a> to grab content from a screen as text</li>
+<li><a href="https://filingdb.com/b/pdf-text-extraction">What's so hard about PDF text extraction?</a></li>
+<li><a href="https://www.emacswiki.org/emacs/DeletingWhitespace">Deleting whitespaces</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-Hugo" class="outline-3">
+<h3 id="Hugo"><span class="section-number-3">3.5</span> Hugo</h3>
+<div class="outline-text-3" id="text-3-5">
+</div>
+<div id="outline-container-How%20to%20set%20%3Dtarget%3D_blank%3D%20for%20all%20external%20links%3F" class="outline-4">
+<h4 id="How%20to%20set%20%3Dtarget%3D_blank%3D%20for%20all%20external%20links%3F"><span class="section-number-4">3.5.1</span> How to set <code>target=_blank</code> for all external links?</h4>
+<div class="outline-text-4" id="text-3-5-1">
+<div class="org-src-container">
+<pre class="src src-shell">mkdir -p layouts/_default/_markup/render-link.html
+<span style="color: #ffb86c;">echo</span> <span style="color: #f1fa8c;">'&lt;a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if strings.HasPrefix .Destination "http" }} target="_blank"{{ end }}&gt;{{ .Text }}&lt;/a&gt;'</span> &gt; layouts/_default/_markup/render-link.html
+</pre>
+</div>
+
+<p>
+Source: <a href="https://agrimprasad.com/post/hugo-goldmark-markdown/">How to Open Link in New Tab with Hugo's new Goldmark Markdown Renderer</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20set%20the%20home%20page%20to%20other%20content%3F" class="outline-4">
+<h4 id="How%20to%20set%20the%20home%20page%20to%20other%20content%3F"><span class="section-number-4">3.5.2</span> How to set the home page to other content?</h4>
+<div class="outline-text-4" id="text-3-5-2">
+<p>
+Show <code>contentname</code> as landing or home page
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">mkdir -p layouts
+<span style="color: #ffb86c;">echo</span> <span style="color: #f1fa8c;">'{{ with .GetPage "/contentname" }}{{.Render}}{{end}}'</span> &gt; layouts/index.html
+</pre>
+</div>
+
+<p>
+Source: <a href="https://discourse.gohugo.io/t/i-want-to-redirect-my-homepage-to-a-content-page/16318/5">I want to redirect my Homepage to a content page</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Typesetting" class="outline-2">
+<h2 id="Typesetting"><span class="section-number-2">4</span> Typesetting</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-%28La%29TeX" class="outline-3">
+<h3 id="%28La%29TeX"><span class="section-number-3">4.1</span> (La)TeX</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-How%20to%20write%20better%20LaTeX%3F" class="outline-4">
+<h4 id="How%20to%20write%20better%20LaTeX%3F"><span class="section-number-4">4.1.1</span> How to write better LaTeX?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="guidelines">guidelines</span></span></h4>
+<div class="outline-text-4" id="text-4-1-1">
+<ul class="org-ul">
+<li><a href="https://texfaq.org/">TeX FAQ</a>: The TeX Frequently Asked Question List</li>
+<li><a href="https://www.ctan.org/pkg/nag">nug</a>: Package that warns the user about the use of obsolete things</li>
+<li><a href="https://www.ctan.org/pkg/l2tabu-english">l2tabu</a>: Practical usage guide with mistakes, obsolete packages and
+commands</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20avoid%20orphan%20words%3F" class="outline-4">
+<h4 id="How%20to%20avoid%20orphan%20words%3F"><span class="section-number-4">4.1.2</span> How to avoid orphan words?</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<p>
+Sometimes, we have one or two words hanging on the last line of a
+paragraph.
+</p>
+
+<ul class="org-ul">
+<li>Adjust <code>badness</code> limits</li>
+<li><code>\parfillskip</code> controls the length at the end of a paragraph</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-When%20should%20I%20use%20non-breaking%20space%20%28tilde%29%3F" class="outline-4">
+<h4 id="When%20should%20I%20use%20non-breaking%20space%20%28tilde%29%3F"><span class="section-number-4">4.1.3</span> When should I use non-breaking space (tilde)?</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<ul class="org-ul">
+<li><a href="https://tex.stackexchange.com/a/15555/225233">When should I use non-breaking space?</a></li>
+<li><a href="https://tex.stackexchange.com/a/1797/225233">What is the right way to use of non-breakable space before math expressions?</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20write%20an%20unnumbered%20footnote%3F" class="outline-4">
+<h4 id="How%20to%20write%20an%20unnumbered%20footnote%3F"><span class="section-number-4">4.1.4</span> How to write an unnumbered footnote?</h4>
+<div class="outline-text-4" id="text-4-1-4">
+<ul class="org-ul">
+<li><a href="https://tex.stackexchange.com/a/170512/225233">Footnotes without numbering</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-What%20symbol%20should%20I%20use%20for%20...%20%3F" class="outline-4">
+<h4 id="What%20symbol%20should%20I%20use%20for%20...%20%3F"><span class="section-number-4">4.1.5</span> What symbol should I use for &#x2026; ?</h4>
+<div class="outline-text-4" id="text-4-1-5">
+<ul class="org-ul">
+<li><a href="http://www.math.toronto.edu/mathit/symbols-letter.pdf">The Comprehensive LaTeX Symbol List</a></li>
+<li><a href="https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols">List of LaTeX mathematical symbols</a>: all predefined mathematical symbols</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Symbol%20lookup" class="outline-4">
+<h4 id="Symbol%20lookup"><span class="section-number-4">4.1.6</span> Symbol lookup</h4>
+<div class="outline-text-4" id="text-4-1-6">
+<ul class="org-ul">
+<li><a href="http://detexify.kirelabs.org/classify.html">Detexify</a>: draw symbol by hand or use the symbol table</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20debug%20the%20LaTeX%20document%20layout%2C%20sizes%2C%20and%20spacing%3F" class="outline-4">
+<h4 id="How%20to%20debug%20the%20LaTeX%20document%20layout%2C%20sizes%2C%20and%20spacing%3F"><span class="section-number-4">4.1.7</span> How to debug the LaTeX document layout, sizes, and spacing?</h4>
+<div class="outline-text-4" id="text-4-1-7">
+<ul class="org-ul">
+<li><a href="https://ctan.math.washington.edu/tex-archive/macros/luatex/generic/lua-visual-debug/">lua-visual-debug</a>: it looks <a href="https://ctan.math.washington.edu/tex-archive/macros/luatex/generic/lua-visual-debug/doc/sample.pdf">gorgeous</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-What%20is%20the%20document%20body%20ratio%3F" class="outline-4">
+<h4 id="What%20is%20the%20document%20body%20ratio%3F"><span class="section-number-4">4.1.8</span> What is the document body ratio?</h4>
+<div class="outline-text-4" id="text-4-1-8">
+<div class="org-src-container">
+<pre class="src src-latex">Body width:  <span style="color: #ffff00;">\the\textwidth</span>
+Body height: <span style="color: #ffff00;">\the\textheight</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><a href="https://tex.stackexchange.com/q/253354/225233">How to interpret the page layout in LaTeX using layout package?</a></li>
+<li><a href="https://i.stack.imgur.com/kOAM5.png">Page layour visual guide</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20reduce%20spacing%20around%20figures%2C%20tables%2C%20captions%3F" class="outline-4">
+<h4 id="How%20to%20reduce%20spacing%20around%20figures%2C%20tables%2C%20captions%3F"><span class="section-number-4">4.1.9</span> How to reduce spacing around figures, tables, captions?</h4>
+<div class="outline-text-4" id="text-4-1-9">
+<ul class="org-ul">
+<li>\textfloatsep — distance between floats on the top or the bottom and the text;</li>
+<li>\floatsep — distance between two floats;</li>
+<li>\intextsep — distance between floats inserted inside the page text</li>
+<li>(using h) and the text proper.</li>
+<li>\dbltextfloatsep — distance between a float spanning both columns and the text;</li>
+<li>\dblfloatsep — distance between two floats spanning both columns.</li>
+<li><p>
+\captionsetup{font=footnotesize}
+</p>
+
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #a49462;">% </span><span style="color: #a49462;">Reduced margins</span>
+<span style="color: #ff79c6; font-weight: bold;">\usepackage</span><span style="color: #f8f8f2;">{</span><span style="color: #50fa7b; font-weight: bold;">geometry</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ffff00;">\geometry</span><span style="color: #f8f8f2;">{</span>left=0.75in,right=0.75in,bottom=1in,top=1in<span style="color: #f8f8f2;">}</span>
+
+<span style="color: #a49462;">% </span><span style="color: #a49462;">Minimal spacing around captions and floats</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\abovecaptionskip</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">2pt plus 1pt minus 2pt</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\belowcaptionskip</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">2pt plus 1pt minus 2pt</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\textfloatsep</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">2pt plus 1pt minus 2pt</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\intextsep</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">2pt plus 1pt minus 2pt</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\floatsep</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">2pt plus 1pt minus 2pt</span><span style="color: #f8f8f2;">}</span>
+
+<span style="color: #a49462;">% </span><span style="color: #a49462;">Minimal spacing around equations</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\abovedisplayskip</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">0pt</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\belowdisplayskip</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">0pt</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\abovedisplayshortskip</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">0pt</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ff79c6; font-weight: bold;">\setlength</span><span style="color: #f8f8f2;">{</span><span style="color: #f8f8f2; font-weight: bold;">\belowdisplayshortskip</span><span style="color: #f8f8f2;">}{</span><span style="color: #f8f8f2; font-weight: bold;">0pt</span><span style="color: #f8f8f2;">}</span>
+</pre>
+</div></li>
+</ul>
+
+<p>
+Source:
+</p>
+<ul class="org-ul">
+<li><a href="https://tex.stackexchange.com/a/26522/225233">How to change the spacing between figures/tables and text?</a></li>
+<li><a href="https://stackoverflow.com/a/27243065/2860744">How to reduce the size of captions in all figures?</a></li>
+<li><a href="https://tex.stackexchange.com/a/45996/225233">How can I modify vertical space between figure and caption?</a></li>
+<li><a href="https://tex.stackexchange.com/a/53340/225233">Reducing spacing after headings</a></li>
+<li><a href="https://ctan.math.utah.edu/ctan/tex-archive/macros/latex/contrib/layouts/layman.pdf">Layouts package</a>: enable the display of various elements of a
+document's layout</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20influence%20the%20position%20of%20a%20figure%2Ftable%3F" class="outline-4">
+<h4 id="How%20to%20influence%20the%20position%20of%20a%20figure%2Ftable%3F"><span class="section-number-4">4.1.10</span> How to influence the position of a figure/table?</h4>
+<div class="outline-text-4" id="text-4-1-10">
+<ul class="org-ul">
+<li>Low-effort approach: load <code>\usepackage[section]{placeins}</code> and
+set <code>h!</code> for placement specifiers. It adds a <code>\FloatBarrier</code>
+(<a href="https://tex.stackexchange.com/a/88659/225233">more</a>) at the end of a section to avoid mixing floats and
+sections.</li>
+<li><a href="https://www.latex-project.org/publications/2014-FMi-TUB-tb111mitt-float-placement.pdf">How to influence the position of float environments like figure
+and table in LATEX?</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20fiddle%20with%20math%20font%20height%20and%20width%3F" class="outline-4">
+<h4 id="How%20to%20fiddle%20with%20math%20font%20height%20and%20width%3F"><span class="section-number-4">4.1.11</span> How to fiddle with math font height and width?</h4>
+<div class="outline-text-4" id="text-4-1-11">
+<p>
+<a href="https://paste.xinu.at/m-QzacZr/">https://paste.xinu.at/m-QzacZr/</a>
+<a href="https://paste.xinu.at/m-sHDc/">https://paste.xinu.at/m-sHDc/</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20set%20a%20global%20path%20for%20input%20and%20graphic%20files%3F" class="outline-4">
+<h4 id="How%20to%20set%20a%20global%20path%20for%20input%20and%20graphic%20files%3F"><span class="section-number-4">4.1.12</span> How to set a global path for input and graphic files?</h4>
+<div class="outline-text-4" id="text-4-1-12">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #ffff00;">\makeatletter</span>
+<span style="color: #ffff00;">\def\input@path</span><span style="color: #f8f8f2;">{</span><span style="color: #8be9fd;">{</span>/path/to/folder/<span style="color: #8be9fd;">}</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #a49462;">% </span><span style="color: #a49462;">or: </span><span style="color: #a49462;">\def\input@path</span><span style="color: #a49462;">{{/path/to/folder/}{/path/to/another/folder/}}</span>
+<span style="color: #ffff00;">\makeatother</span>
+</pre>
+</div>
+
+<p>
+Source: <a href="https://tex.stackexchange.com/a/24827/225233">\input and absolute paths</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20align%20table%20columns%20without%20counting%20them%3F" class="outline-4">
+<h4 id="How%20to%20align%20table%20columns%20without%20counting%20them%3F"><span class="section-number-4">4.1.13</span> How to align table columns without counting them?</h4>
+<div class="outline-text-4" id="text-4-1-13">
+<p>
+Say you want to align the first column to the left and the rest to
+the right without needing to figure out how many columns the table
+has. You can specify more columns than used, but not vice-versa, as
+in <code>l*9r</code> or <code>l*{99}</code>. Use brackets for more than one digit.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #ff79c6; font-weight: bold;">\begin</span><span style="color: #f8f8f2;">{</span><span style="color: #50fa7b; font-weight: bold;">tabular</span><span style="color: #f8f8f2;">}{</span>l*<span style="color: #8be9fd;">{</span>99<span style="color: #8be9fd;">}</span>r<span style="color: #f8f8f2;">}</span>
+  col1 <span style="color: #ff0000; font-weight: bold;">&amp;</span> col2 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #ff79c6; font-weight: bold;">\end</span><span style="color: #f8f8f2;">{</span><span style="color: #50fa7b; font-weight: bold;">tabular</span><span style="color: #f8f8f2;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20add%20the%20%28sub%29section%20name%20in%20the%20page%20header%3F" class="outline-4">
+<h4 id="How%20to%20add%20the%20%28sub%29section%20name%20in%20the%20page%20header%3F"><span class="section-number-4">4.1.14</span> How to add the (sub)section name in the page header?</h4>
+<div class="outline-text-4" id="text-4-1-14">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #a49462;">% </span><span style="color: #a49462;">Add section name in page header</span>
+<span style="color: #ff79c6; font-weight: bold;">\usepackage</span><span style="color: #f8f8f2;">{</span><span style="color: #50fa7b; font-weight: bold;">fancyhdr</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ffff00;">\fancypagestyle</span><span style="color: #f8f8f2;">{</span>main<span style="color: #f8f8f2;">}{</span>
+  <span style="color: #ffff00;">\fancyhf</span><span style="color: #8be9fd;">{}</span>
+  <span style="color: #ff79c6; font-weight: bold;">\renewcommand</span><span style="color: #8be9fd;">{</span><span style="color: #ff0000; font-weight: bold;">\</span><span style="color: #ff79c6; font-weight: bold;">sectionmark</span><span style="color: #8be9fd;">}[</span><span style="color: #f8f8f2; font-weight: bold;">1</span><span style="color: #8be9fd;">]{</span><span style="color: #50fa7b; font-weight: bold;">\markright</span><span style="color: #bd93f9; font-weight: bold;">{</span><span style="color: #50fa7b; font-weight: bold;">\thesection</span><span style="color: #50fa7b; font-weight: bold;">\ ##1</span><span style="color: #bd93f9; font-weight: bold;">}</span><span style="color: #8be9fd;">}</span>
+  <span style="color: #ff79c6; font-weight: bold;">\renewcommand</span><span style="color: #8be9fd;">{</span><span style="color: #ff0000; font-weight: bold;">\</span><span style="color: #ff79c6; font-weight: bold;">subsectionmark</span><span style="color: #8be9fd;">}[</span><span style="color: #f8f8f2; font-weight: bold;">1</span><span style="color: #8be9fd;">]{</span><span style="color: #50fa7b; font-weight: bold;">\markright</span><span style="color: #bd93f9; font-weight: bold;">{</span><span style="color: #50fa7b; font-weight: bold;">\thesubsection</span><span style="color: #50fa7b; font-weight: bold;">\ ##1</span><span style="color: #bd93f9; font-weight: bold;">}</span><span style="color: #8be9fd;">}</span>
+  <span style="color: #ff79c6; font-weight: bold;">\renewcommand</span><span style="color: #8be9fd;">{</span><span style="color: #ff0000; font-weight: bold;">\</span><span style="color: #ff79c6; font-weight: bold;">subsubsectionmark</span><span style="color: #8be9fd;">}[</span><span style="color: #f8f8f2; font-weight: bold;">1</span><span style="color: #8be9fd;">]{</span><span style="color: #50fa7b; font-weight: bold;">\markright</span><span style="color: #bd93f9; font-weight: bold;">{</span><span style="color: #50fa7b; font-weight: bold;">\thesubsubsection</span><span style="color: #50fa7b; font-weight: bold;">\ ##1</span><span style="color: #bd93f9; font-weight: bold;">}</span><span style="color: #8be9fd;">}</span>
+  <span style="color: #ffff00;">\fancyhead</span><span style="color: #8be9fd;">[</span>L<span style="color: #8be9fd;">]{</span><span style="color: #ff79c6; font-weight: bold;">\textsl</span><span style="color: #bd93f9;">{</span><span style="color: #ff79c6; font-weight: bold; font-style: italic;">\footnotesize</span><span style="color: #ff79c6; font-style: italic;">{</span><span style="color: #ff79c6; font-style: italic;">\rightmark</span><span style="color: #ff79c6; font-style: italic;">}</span><span style="color: #bd93f9;">}</span><span style="color: #8be9fd;">}</span>
+<span style="color: #f8f8f2;">}</span>
+<span style="color: #ff79c6; font-weight: bold;">\pagestyle</span><span style="color: #f8f8f2;">{</span><span style="color: #50fa7b; font-weight: bold;">main</span><span style="color: #f8f8f2;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20hide%20section%20headings%3F" class="outline-4">
+<h4 id="How%20to%20hide%20section%20headings%3F"><span class="section-number-4">4.1.15</span> How to hide section headings?</h4>
+<div class="outline-text-4" id="text-4-1-15">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #ff79c6; font-weight: bold;">\usepackage</span><span style="color: #f8f8f2;">{</span><span style="color: #50fa7b; font-weight: bold;">titlesec</span><span style="color: #f8f8f2;">}</span>
+
+<span style="color: #ffff00;">\makeatletter</span>
+<span style="color: #ffff00;">\titleformat</span><span style="color: #f8f8f2;">{</span><span style="color: #ff0000; font-weight: bold;">\</span><span style="color: #ff79c6; font-weight: bold;">section</span><span style="color: #f8f8f2;">}[</span>runin<span style="color: #f8f8f2;">]{}{}{</span>0pt<span style="color: #f8f8f2;">}{</span><span style="color: #ffff00;">\@gobble</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ffff00;">\titleformat</span><span style="color: #f8f8f2;">{</span><span style="color: #ff0000; font-weight: bold;">\</span><span style="color: #ff79c6; font-weight: bold;">subsection</span><span style="color: #f8f8f2;">}[</span>runin<span style="color: #f8f8f2;">]{}{}{</span>0pt<span style="color: #f8f8f2;">}{</span><span style="color: #ffff00;">\@gobble</span><span style="color: #f8f8f2;">}</span>
+
+<span style="color: #ffff00;">\makeatother</span>
+<span style="color: #ffff00;">\titlespacing</span><span style="color: #f8f8f2;">{</span><span style="color: #ff0000; font-weight: bold;">\</span><span style="color: #ff79c6; font-weight: bold;">section</span><span style="color: #f8f8f2;">}{</span><span style="color: #ffff00;">\parindent</span><span style="color: #f8f8f2;">}{</span>0pt<span style="color: #f8f8f2;">}{</span>0pt<span style="color: #f8f8f2;">}</span>
+<span style="color: #ffff00;">\titlespacing</span><span style="color: #f8f8f2;">{</span><span style="color: #ff0000; font-weight: bold;">\</span><span style="color: #ff79c6; font-weight: bold;">subsection</span><span style="color: #f8f8f2;">}{</span><span style="color: #ffff00;">\parindent</span><span style="color: #f8f8f2;">}{</span>0pt<span style="color: #f8f8f2;">}{</span>0pt<span style="color: #f8f8f2;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20change%20the%20caption%20font%20size%3F" class="outline-4">
+<h4 id="How%20to%20change%20the%20caption%20font%20size%3F"><span class="section-number-4">4.1.16</span> How to change the caption font size?</h4>
+<div class="outline-text-4" id="text-4-1-16">
+<div class="org-src-container">
+<pre class="src src-latex"><span style="color: #ff79c6; font-weight: bold;">\usepackage</span><span style="color: #f8f8f2;">{</span><span style="color: #50fa7b; font-weight: bold;">caption</span><span style="color: #f8f8f2;">}</span>
+<span style="color: #ffff00;">\captionsetup</span><span style="color: #f8f8f2;">{</span>font=footnotesize<span style="color: #f8f8f2;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20make%20GitHub%20compile%20a%20document%20after%20a%20push%3F" class="outline-4">
+<h4 id="How%20to%20make%20GitHub%20compile%20a%20document%20after%20a%20push%3F"><span class="section-number-4">4.1.17</span> How to make GitHub compile a document after a push?</h4>
+<div class="outline-text-4" id="text-4-1-17">
+<ul class="org-ul">
+<li><a href="https://github.com/exaexa/better-mff-thesis/blob/b8d46ea25a11972ea9cb08f0b0da7df1a23ad178/.github/workflows/main.yml">GitHub workflow yaml file by exaexa</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Resources" class="outline-4">
+<h4 id="Resources"><span class="section-number-4">4.1.18</span> Resources</h4>
+<div class="outline-text-4" id="text-4-1-18">
+<ul class="org-ul">
+<li><a href="https://tobi.oetiker.ch/lshort/lshort.pdf">The Not So Short Introduction to LaTeX2e</a>: LaTeX2e in 139 minutes</li>
+<li><a href="https://www.ctan.org/pkg/texbook">The TeXbook</a>: an example of the business of writing a book in TeX</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-Beamer" class="outline-3">
+<h3 id="Beamer"><span class="section-number-3">4.2</span> Beamer</h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+<div id="outline-container-How%20to%20build%20a%20Beamer%20template%3F" class="outline-4">
+<h4 id="How%20to%20build%20a%20Beamer%20template%3F"><span class="section-number-4">4.2.1</span> How to build a Beamer template?</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+Mix and match:
+</p>
+
+<ul class="org-ul">
+<li>A base template</li>
+<li>Text font, e.g., <a href="https://tug.org/FontCatalogue/mathfonts.html">https://tug.org/FontCatalogue/mathfonts.html</a>
+<ul class="org-ul">
+<li>Latin Modern, Stix2, XITS, Asana, Fira Math, TeX Gyre
+{Pagella,Bonum,Schola,Termes,Heros}, Libertinus, Euler, Lucida
+Bright, and Minion Pro</li>
+</ul></li>
+<li>Math font, e.g., <a href="https://fontlibrary.org/en/font/libertinus-serif">Libertinus</a>
+<ul class="org-ul">
+<li>Mono math? <a href="https://tug.org/FontCatalogue/computerconcrete/">https://tug.org/FontCatalogue/computerconcrete/</a></li>
+<li><a href="https://tex.stackexchange.com/a/59706/225233">Suggest a "nice" font family for my basic LaTeX template (text and math)</a></li>
+</ul></li>
+<li>Color palette, e.g., <a href="https://lvjr.bitbucket.io/contrast.html">https://lvjr.bitbucket.io/contrast.html</a></li>
+<li>Accessibility guidelines</li>
+<li>Good presentation guidelines</li>
+<li>List of slide layouts</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-Graph%20diagrams" class="outline-3">
+<h3 id="Graph%20diagrams"><span class="section-number-3">4.3</span> Graph diagrams</h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+<div id="outline-container-Graphviz" class="outline-4">
+<h4 id="Graphviz"><span class="section-number-4">4.3.1</span> Graphviz</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<ul class="org-ul">
+<li>Engine: <a href="https://graphviz.org/">graphviz</a>, mostly <a href="https://graphviz.org/doc/info/lang.html">DOT</a></li>
+<li>Editor online: <a href="https://edotor.net/">Edotor</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-PGF%2FTikZ" class="outline-4">
+<h4 id="PGF%2FTikZ"><span class="section-number-4">4.3.2</span> PGF/TikZ</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<p>
+Typically requires a bit more of work, but it's more flexible and
+allows for neater graphs
+</p>
+
+<ul class="org-ul">
+<li>Use the <code>graphdrawing</code> tikz library for automated graph layout</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-Biblatex" class="outline-3">
+<h3 id="Biblatex"><span class="section-number-3">4.4</span> Biblatex</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>Use biblatex (LaTeX package that format citations) with a biber
+backend (external program that processes bibliography information)</li>
+<li><a href="https://tex.stackexchange.com/a/25702/225233">bibtex vs. biber and biblatex vs. natbib</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Reference%20management" class="outline-3">
+<h3 id="Reference%20management"><span class="section-number-3">4.5</span> Reference management</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>Use <a href="https://zotero.org/">Zotero</a> with <a href="https://www.zotero.org/download/connectors">Zotero connector</a> and <a href="https://retorque.re/zotero-better-bibtex/">better bibtex</a>.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Text%20editors" class="outline-2">
+<h2 id="Text%20editors"><span class="section-number-2">5</span> Text editors</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-Emacs" class="outline-3">
+<h3 id="Emacs"><span class="section-number-3">5.1</span> Emacs</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-How%20to%20open%20all%20files%20by%20pattern%3F" class="outline-4">
+<h4 id="How%20to%20open%20all%20files%20by%20pattern%3F"><span class="section-number-4">5.1.1</span> How to open all files by pattern?</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<div class="org-src-container">
+<pre class="src src-shell">emacs *.tex
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell">emacs *.tex */*.tex
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-shell">find . -iname <span style="color: #f1fa8c;">\*</span>tex -exec emacsclient {} +
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20profile%20settings%3F" class="outline-4">
+<h4 id="How%20to%20profile%20settings%3F"><span class="section-number-4">5.1.2</span> How to profile settings?</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<ul class="org-ul">
+<li><a href="https://melpa.org/#/esup">The Emacs StartUp Profiler (ESUP)</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Useful%20modes" class="outline-4">
+<h4 id="Useful%20modes"><span class="section-number-4">5.1.3</span> Useful modes</h4>
+<div class="outline-text-4" id="text-5-1-3">
+<ul class="org-ul">
+<li><a href="https://ftp.gnu.org/pub/gnu/auctex/12.2-extra/tex-ref.pdf">AucTex reference card</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Emacs%20packages%20worth%20checking" class="outline-4">
+<h4 id="Emacs%20packages%20worth%20checking"><span class="section-number-4">5.1.4</span> Emacs packages worth checking</h4>
+<div class="outline-text-4" id="text-5-1-4">
+<ul class="org-ul">
+<li>ripgrep</li>
+<li>eshell</li>
+<li>dired</li>
+<li>mu4e</li>
+<li>org-publish: for a website</li>
+<li>org-roam</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Org-mode" class="outline-3">
+<h3 id="Org-mode"><span class="section-number-3">5.2</span> Org-mode</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li><a href="https://academia.stackexchange.com/questions/1273/use-cases-of-org-mode-as-a-scientific-productivity-tool-for-academics-without-pr">Use cases of org-mode as a scientific productivity tool for academics</a></li>
+<li><a href="https://github.com/fniessen/refcard-org-mode">Org-mode reference card</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Elisp" class="outline-3">
+<h3 id="Elisp"><span class="section-number-3">5.3</span> Elisp</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+<div id="outline-container-Where%20to%20start%20with%20elisp%3F" class="outline-4">
+<h4 id="Where%20to%20start%20with%20elisp%3F"><span class="section-number-4">5.3.1</span> Where to start with elisp?</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(info <span style="color: #f1fa8c;">"(eintr) Top"</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Programming" class="outline-2">
+<h2 id="Programming"><span class="section-number-2">6</span> Programming</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-Programming%20fonts" class="outline-3">
+<h3 id="Programming%20fonts"><span class="section-number-3">6.1</span> Programming fonts</h3>
+<div class="outline-text-3" id="text-6-1">
+<ul class="org-ul">
+<li>Recommended fonts: Consoles, Andale mono, fira code (ligatures),
+Source Code Pro, DejaVu Sans Mono</li>
+<li>Use <code>Illegal1 = O0</code> as a test</li>
+</ul>
+
+<p>
+Source: <a href="https://stackoverflow.com/q/4689/2860744">recommended fonts for programming?</a>
+</p>
+</div>
+</div>
+<div id="outline-container-Project%20structure" class="outline-3">
+<h3 id="Project%20structure"><span class="section-number-3">6.2</span> Project structure</h3>
+<div class="outline-text-3" id="text-6-2">
+<ul class="org-ul">
+<li>Prefer folder-by-feature over folder-by-type (<a href="https://softwareengineering.stackexchange.com/a/338610">source</a>)</li>
+<li>Organize tests by mirroring the source tree (<a href="https://softwareengineering.stackexchange.com/a/112261">source</a>)</li>
+<li>Typical structure (<a href="https://softwareengineering.stackexchange.com/a/392461">source</a>)
+<ul class="org-ul">
+<li><code>/bin</code> Files to be executed</li>
+<li><code>/src</code> Source files</li>
+<li><code>/lib</code> External dependencies</li>
+<li><code>/doc</code> Documentation, and more generally any kind of writing</li>
+<li><code>/test</code> All tests</li>
+<li><code>/sandbox</code> The fact that there's one is probably a bad sign, but
+there you go</li>
+</ul></li>
+<li>Executable files
+<ul class="org-ul">
+<li>Go in the <code>\bin</code> folder</li>
+<li>Start with the appropiate shebang, e.g., <code>#!/usr/bin/Rscript</code></li>
+<li>Are truly executable, e.g., <code>chmod +x script.R</code></li>
+<li>Has all paths set so that it can be called from the project
+root, e.g., <code>./bin/process-data.R</code></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-Functional%20programming" class="outline-3">
+<h3 id="Functional%20programming"><span class="section-number-3">6.3</span> Functional programming</h3>
+<div class="outline-text-3" id="text-6-3">
+</div>
+<div id="outline-container-Concepts" class="outline-4">
+<h4 id="Concepts"><span class="section-number-4">6.3.1</span> Concepts</h4>
+<div class="outline-text-4" id="text-6-3-1">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/218025/what-is-the-difference-between-currying-and-partial-application">What is the difference between currying and partial application?</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Functional%20design%20patterns" class="outline-4">
+<h4 id="Functional%20design%20patterns"><span class="section-number-4">6.3.2</span> Functional design patterns</h4>
+<div class="outline-text-4" id="text-6-3-2">
+<p>
+A program is chain of monoids (which is a chain of continuations
+(which is a chain of partial applications (which is a chain of
+compositions (which is a chain of one-argument functions))))
+</p>
+
+<ul class="org-ul">
+<li>Functions all the way down!
+<ul class="org-ul">
+<li>Function as inputs</li>
+<li>Functions as outputs</li>
+<li>Function as arguments
+<ul class="org-ul">
+<li>Hard-coded data, e.g., <code>for i in 1:10</code></li>
+<li>Hard-coded behavior, e.g., <code>print</code></li>
+<li>Decouple behavior from data, i.e., any behavior times any data</li>
+<li>Collection functions, e.g., fold, map, reduce, collect</li>
+</ul></li>
+</ul></li>
+<li>Composition pattern: chain low-level operations
+<ul class="org-ul">
+<li>e.g., <code>apple -&gt; cherry = apple -&gt; banana + banana -&gt; cherry</code></li>
+<li>Low-level operation: e.g., <code>string -&gt; string</code></li>
+<li>Service: chained low level operations, e.g., <code>Address -&gt; Validation</code></li>
+<li>Use-case: chained services, e.g., <code>ChangeProfileRequest -&gt; 
+       ChangeProfileResult</code></li>
+<li>Application: chained use-cases, e.g., <code>Request -&gt; Response</code></li>
+<li>Composition is fractal</li>
+<li>Works for functions with one parameter only (see next)</li>
+</ul></li>
+<li>Partial application
+<ul class="org-ul">
+<li>Write a two-parameter function as a one-parameter function that
+returns a one parameter function, e.g., <code>a + b = function(b) { a +
+       b })</code>.</li>
+<li>Uses:
+<ul class="org-ul">
+<li>When working with vectorized applications, e.g., lapply, Map,
+Filter.</li>
+<li>To inject dependencies, e.g., on a database or file
+connection.</li>
+</ul></li>
+</ul></li>
+<li>Continuations: chain partial applications
+<ul class="org-ul">
+<li>Bad: nested checks (<a href="https://en.wikipedia.org/wiki/Pyramid_of_doom_(programming)">pyramid of doom</a>)</li>
+<li>Good:
+<ul class="org-ul">
+<li>Start with an abstract <code>if_ function -&gt; returnType</code></li>
+<li><p>
+Chain them:
+</p>
+<pre class="example">
+if_(doA) else doNestedActionLevel1
+if_(doB) else doNestedActionLevel2
+if_(doC) else doNestedActionLevel3
+</pre></li>
+</ul></li>
+</ul></li>
+<li>Monoids: chain continuations
+<ul class="org-ul">
+<li>Closure: combining two things always returns another one
+thing.
+<ul class="org-ul">
+<li>Readily <b>vectorized</b>!</li>
+</ul></li>
+<li>Associativity: when combining more than two things, pairwise
+combination order does not matter
+<ul class="org-ul">
+<li>Readily <b>parallelized</b>!</li>
+<li>Easy for incremental accumulation</li>
+</ul></li>
+<li>Identity: a special thing called "zero" that returns the same
+thing that was combined with it
+<ul class="org-ul">
+<li>Use as <b>initial value</b> for empty or missing data</li>
+</ul></li>
+</ul></li>
+<li>Two-track model for error handling:
+<ul class="org-ul">
+<li>Use a switch function for error handling, e.g.,
+<code>validate(input)</code> calls <code>sucessFun(input)</code> or <code>failure(error)</code></li>
+</ul></li>
+</ul>
+
+<p>
+From <a href="https://www.slideshare.net/ScottWlaschin/fp-patterns-ndc-london2014">Functional Programming Patterns (NDC London 2014)</a> by Scott Wlaschin.
+</p>
+</div>
+</div>
+
+<div id="outline-container-General" class="outline-4">
+<h4 id="General"><span class="section-number-4">6.3.3</span> General</h4>
+<div class="outline-text-4" id="text-6-3-3">
+<ul class="org-ul">
+<li><a href="https://fsharpforfunandprofit.com/fppatterns/">Functional Programming Design Patterns</a>: design pattern overview
+and some demonstrations</li>
+<li><a href="https://softwareengineering.stackexchange.com/questions/89273/where-are-all-the-functional-programming-design-patterns">Where are all the functional programming design patterns?</a></li>
+<li><a href="http://www.cs.ox.ac.uk/publications/publication2335-abstract.html">Origami programming</a>: natural patterns for computation over
+recursive datatypes</li>
+<li><a href="https://alvinalexander.gumroad.com/l/lfpis">Functional Programming, Simplified</a>: large <a href="https://alvinalexander.com/scala/functional-programming-simplified-book">free preview</a> available
+<ul class="org-ul">
+<li>The proper way to handle exceptions and null values</li>
+<li>Many lessons on <code>for</code>-expressions, which lead naturally into
+monads</li>
+</ul></li>
+<li><a href="https://docs.google.com/presentation/d/1a4GvI0dbL8sfAlnTUwVxhq4_j-QiDlz02_t0XZJXnzY/preview?slide=id.ga8d8f45ac_065">To know good vs bad Scala style</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-R%20programming" class="outline-2">
+<h2 id="R%20programming"><span class="section-number-2">7</span> R programming</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-Write%20better%20R" class="outline-3">
+<h3 id="Write%20better%20R"><span class="section-number-3">7.1</span> Write better R</h3>
+<div class="outline-text-3" id="text-7-1">
+</div>
+<div id="outline-container-Non-standard%20evaluation" class="outline-4">
+<h4 id="Non-standard%20evaluation"><span class="section-number-4">7.1.1</span> Non-standard evaluation</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<ul class="org-ul">
+<li>NSEs are like <b>super duper macros</b></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-R%20is%20functional" class="outline-4">
+<h4 id="R%20is%20functional"><span class="section-number-4">7.1.2</span> R is functional</h4>
+<div class="outline-text-4" id="text-7-1-2">
+<ul class="org-ul">
+<li>Functions as arguments</li>
+<li>Functions as ?</li>
+<li>Functions as output</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-R%20has%20dynamic%20binding" class="outline-4">
+<h4 id="R%20has%20dynamic%20binding"><span class="section-number-4">7.1.3</span> R has dynamic binding</h4>
+<div class="outline-text-4" id="text-7-1-3">
+<p>
+Or something like that for functions, check
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-R%20programming--R%20programming" class="outline-3">
+<h3 id="R%20programming--R%20programming"><span class="section-number-3">7.2</span> R programming</h3>
+<div class="outline-text-3" id="text-7-2">
+</div>
+<div id="outline-container-How%20to%20add%20a%20hook%20to%20a%20function%20call%3F" class="outline-4">
+<h4 id="How%20to%20add%20a%20hook%20to%20a%20function%20call%3F"><span class="section-number-4">7.2.1</span> How to add a hook to a function call?</h4>
+<div class="outline-text-4" id="text-7-2-1">
+<p>
+Use <code>trace</code> to get execute an expression after and before a
+function call.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #50fa7b; font-weight: bold;">f_before</span> <span style="color: #8be9fd;">&lt;-</span> <span style="color: #ff79c6; font-weight: bold;">function</span>() { print(<span style="color: #f1fa8c;">"Before call"</span>) }
+<span style="color: #50fa7b; font-weight: bold;">f_after</span>  <span style="color: #8be9fd;">&lt;-</span> <span style="color: #ff79c6; font-weight: bold;">function</span>() { print(<span style="color: #f1fa8c;">"After  call"</span>) }
+
+trace(base::cumsum, f_before, f_after, print = <span style="color: #bd93f9;">FALSE</span>)
+cumsum(1:10)
+
+untrace(base::cumsum)
+cumsum(1:10)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20renumber%20a%20group%3F" class="outline-4">
+<h4 id="How%20to%20renumber%20a%20group%3F"><span class="section-number-4">7.2.2</span> How to renumber a group?</h4>
+<div class="outline-text-4" id="text-7-2-2">
+<p>
+Note that <code>as.numeric(as.factor(x))</code> does not work if <code>x</code> contains
+numbers. Also, the match-unique combo scales better with large
+vectors.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">x <span style="color: #8be9fd;">&lt;-</span> c(4, 4, 4, 6, 6, 6, 6, 8, 8, 8, 8, 1, 1, 1, 5, 5, 5, 5)
+match(x, unique(x))
+<span style="color: #a49462;"># </span><span style="color: #a49462;">[1] 1 1 1 2 2 2 2 3 3 3 3 4 4 4 5 5 5 5</span>
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/6113019/2860744">how to create a consecutive group number</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20make%20a%20cross%20table%20with%20a%20custom%20function%20%28e.g.%2C%20mean%29%3F" class="outline-4">
+<h4 id="How%20to%20make%20a%20cross%20table%20with%20a%20custom%20function%20%28e.g.%2C%20mean%29%3F"><span class="section-number-4">7.2.3</span> How to make a cross table with a custom function (e.g., mean)?</h4>
+<div class="outline-text-4" id="text-7-2-3">
+<div class="org-src-container">
+<pre class="src src-R">addmargins(xtabs(value ~ ., aggregate(value ~ factor1, factor2, DF, mean)),
+           FUN = mean)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20make%20lapply%20return%20a%20data.frame%3F" class="outline-4">
+<h4 id="How%20to%20make%20lapply%20return%20a%20data.frame%3F"><span class="section-number-4">7.2.4</span> How to make lapply return a data.frame?</h4>
+<div class="outline-text-4" id="text-7-2-4">
+<p>
+If <code>x</code> is a <code>data.frame</code>, which is a list with attributes, use <code>x[]</code>
+to preserve all attributes.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">x[] = lapply(x, type.convert)
+</pre>
+</div>
+
+<p>
+Source: <a href="https://github.com/J-Moravec">Jiří Moravec</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20split%20a%20matrix%20row-wise%20as%20a%20list%3F" class="outline-4">
+<h4 id="How%20to%20split%20a%20matrix%20row-wise%20as%20a%20list%3F"><span class="section-number-4">7.2.5</span> How to split a matrix row-wise as a list?</h4>
+<div class="outline-text-4" id="text-7-2-5">
+<div class="org-src-container">
+<pre class="src src-R">X <span style="color: #8be9fd;">&lt;-</span> matrix(rnorm(100), nrow = 20)
+l <span style="color: #8be9fd;">&lt;-</span> as.list(as.data.frame(t(X)))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Look%20up%20a%20value%20among%20possibilities%3F" class="outline-4">
+<h4 id="Look%20up%20a%20value%20among%20possibilities%3F"><span class="section-number-4">7.2.6</span> Look up a value among possibilities?</h4>
+<div class="outline-text-4" id="text-7-2-6">
+<p>
+The workhorse of any labeling function
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">l <span style="color: #8be9fd;">&lt;-</span> list(key1 = <span style="color: #f1fa8c;">"value1"</span>, key2 = <span style="color: #bd93f9;">NA</span>, key3 = 022)
+<span style="color: #50fa7b; font-weight: bold;">lookup</span> <span style="color: #8be9fd;">&lt;-</span> <span style="color: #ff79c6; font-weight: bold;">function</span>(x, l) { unlist(l[x]) }
+</pre>
+</div>
+
+<p>
+Source: <a href="https://gist.github.com/luisdamiano/c8dc80775970e3159b6d4282e1bd85dd">benchmark unlist versus do.call(c, list) for list lookup in R</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20remove%20columns%20with%20all%20NA%20fast%3F" class="outline-4">
+<h4 id="How%20to%20remove%20columns%20with%20all%20NA%20fast%3F"><span class="section-number-4">7.2.7</span> How to remove columns with all NA fast?</h4>
+<div class="outline-text-4" id="text-7-2-7">
+<p>
+General approach with Base R only
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">Filter(<span style="color: #ff79c6; font-weight: bold;">function</span>(x)!all(is.na(x)), df)
+</pre>
+</div>
+
+<p>
+Via data.table for general time and memory efficiency (40% faster in example)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R">DT[, which(unlist(lapply(DT, <span style="color: #ff79c6; font-weight: bold;">function</span>(x)!all(is.na(x))))), with = <span style="color: #bd93f9;">FALSE</span>]
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/12614723/2860744">remove columns from dataframe where ALL values are NA</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20fast%20subset%20rows%20corresponding%20to%20max%20value%20by%20group%3F" class="outline-4">
+<h4 id="How%20to%20fast%20subset%20rows%20corresponding%20to%20max%20value%20by%20group%3F"><span class="section-number-4">7.2.8</span> How to fast subset rows corresponding to max value by group?</h4>
+<div class="outline-text-4" id="text-7-2-8">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #a49462;"># </span><span style="color: #a49462;">Row with maximum `g` for each group `id` in the `bdt` data.table</span>
+bdt[bdt[, .I[g == max(g)], by = id]$V1]
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/16574176/2860744">subset rows corresponding to max value by group using data.table</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20create%20named%20vector%20programatically%20in%20one%20statement%3F" class="outline-4">
+<h4 id="How%20to%20create%20named%20vector%20programatically%20in%20one%20statement%3F"><span class="section-number-4">7.2.9</span> How to create named vector programatically in one statement?</h4>
+<div class="outline-text-4" id="text-7-2-9">
+<div class="org-src-container">
+<pre class="src src-R">out <span style="color: #8be9fd;">&lt;-</span> setNames(c(<span style="color: #f1fa8c;">"value1"</span>, <span style="color: #f1fa8c;">"value2"</span>), c(<span style="color: #f1fa8c;">"name1"</span>, <span style="color: #f1fa8c;">"name2"</span>))
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/22428439/2860744">create a numeric vector with names in one statement?</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20get%20all%20function%20call%20arguments%20as%20a%20list%3F" class="outline-4">
+<h4 id="How%20to%20get%20all%20function%20call%20arguments%20as%20a%20list%3F"><span class="section-number-4">7.2.10</span> How to get all function call arguments as a list?</h4>
+<div class="outline-text-4" id="text-7-2-10">
+<p>
+Including ellipsis also!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #50fa7b; font-weight: bold;">f</span> <span style="color: #8be9fd;">&lt;-</span> <span style="color: #ff79c6; font-weight: bold;">function</span>(a, b = 2, ...) { c(as.list(environment()), list(...)) }
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/17244041">get all Parameters as List</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20debug%20an%20error%20thrown%20in%20a%20package%3F" class="outline-4">
+<h4 id="How%20to%20debug%20an%20error%20thrown%20in%20a%20package%3F"><span class="section-number-4">7.2.11</span> How to debug an error thrown in a package?</h4>
+<div class="outline-text-4" id="text-7-2-11">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #8be9fd;">options</span>(error = recover, show.error.locations = <span style="color: #bd93f9;">TRUE</span>, warn = 2)
+</pre>
+</div>
+
+<p>
+Source: <a href="https://stackoverflow.com/a/13456223/2860744">debugging unexpected errors in R &#x2013; how can I find where the
+error occurred?</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20draw%20a%20plot%20with%20minimal%20margins%3F" class="outline-4">
+<h4 id="How%20to%20draw%20a%20plot%20with%20minimal%20margins%3F"><span class="section-number-4">7.2.12</span> How to draw a plot with minimal margins?</h4>
+<div class="outline-text-4" id="text-7-2-12">
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #a49462;"># </span><span style="color: #a49462;">oma: Outer  = device margin lines (bltr)</span>
+<span style="color: #a49462;"># </span><span style="color: #a49462;">mar: Margin = figure margin lines (bltr)</span>
+<span style="color: #a49462;"># </span><span style="color: #a49462;">mgp:      ? = axis margin lines (title, label, line)</span>
+
+<span style="color: #a49462;"># </span><span style="color: #a49462;">No title</span>
+opar <span style="color: #8be9fd;">&lt;-</span> <span style="color: #8be9fd;">par</span>(
+  oma = c(0, 0, 0, 0) + .1,
+  mar = c(3, 3, 0, 0),
+  mgp = c(2, 1, 0)
+)
+
+plot(x = 1:10, y = 1:10)
+
+<span style="color: #a49462;"># </span><span style="color: #a49462;">No title nor axis labels</span>
+opar <span style="color: #8be9fd;">&lt;-</span> <span style="color: #8be9fd;">par</span>(
+  oma = c(0, 0, 0, 0) + .1,
+  mar = c(2, 2, 0, 0),
+  mgp = c(2, 1, 0)
+)
+
+plot(x = 1:10, y = 1:10)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20plot%20in%20log%20scale%20with%20base%20R%3F" class="outline-4">
+<h4 id="How%20to%20plot%20in%20log%20scale%20with%20base%20R%3F"><span class="section-number-4">7.2.13</span> How to plot in log scale with base R?</h4>
+<div class="outline-text-4" id="text-7-2-13">
+<div class="org-src-container">
+<pre class="src src-R">plot(exp(1:10), 1:10, log = <span style="color: #f1fa8c;">"x"</span>)
+plot(1:10, exp(1:10), log = <span style="color: #f1fa8c;">"y"</span>)
+plot(exp(1:10), exp(1:10), log = <span style="color: #f1fa8c;">"xy"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20fine%20tune%20R%20plot%20margins%3F" class="outline-4">
+<h4 id="How%20to%20fine%20tune%20R%20plot%20margins%3F"><span class="section-number-4">7.2.14</span> How to fine tune R plot margins?</h4>
+<div class="outline-text-4" id="text-7-2-14">
+<ul class="org-ul">
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/10/how-big-is-your-graph.pdf">How Big is Your Graph?</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20make%20beautiful%20plots%20with%20base%20R%3F" class="outline-4">
+<h4 id="How%20to%20make%20beautiful%20plots%20with%20base%20R%3F"><span class="section-number-4">7.2.15</span> How to make beautiful plots with base R?</h4>
+<div class="outline-text-4" id="text-7-2-15">
+<ul class="org-ul">
+<li><a href="http://karolis.koncevicius.lt/posts/r_base_plotting_without_wrappers/">R base plotting without wrappers</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-R%20programming--Resources" class="outline-4">
+<h4 id="R%20programming--Resources"><span class="section-number-4">7.2.16</span> Resources</h4>
+<div class="outline-text-4" id="text-7-2-16">
+<ul class="org-ul">
+<li><a href="https://pj.freefaculty.org/R/Rtips.html">Rtips</a></li>
+<li><a href="http://karolis.koncevicius.lt/posts/collection_of_simple_r_shortcuts/">A Collection of Simple R Shortcuts</a></li>
+<li><a href="https://csgillespie.github.io/efficientR/set-up.html#blas-and-alternative-r-interpreters">Efficient R programming</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-RStudio" class="outline-3">
+<h3 id="RStudio"><span class="section-number-3">7.3</span> RStudio</h3>
+<div class="outline-text-3" id="text-7-3">
+</div>
+<div id="outline-container-Should%20.Rproj%20files%20be%20added%20to%20.gitignore%3F" class="outline-4">
+<h4 id="Should%20.Rproj%20files%20be%20added%20to%20.gitignore%3F"><span class="section-number-4">7.3.1</span> Should .Rproj files be added to .gitignore?</h4>
+<div class="outline-text-4" id="text-7-3-1">
+<p>
+RStudio general recommendation is to include .Rproj file in the
+repository, i.e., do not ignore it
+</p>
+
+<p>
+Source: <a href="https://community.rstudio.com/t/should-rproj-files-be-added-to-gitignore/1269/4">should *.Rproj files be added to .gitignore?</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20order%20lines%20alphabetically%3F" class="outline-4">
+<h4 id="How%20to%20order%20lines%20alphabetically%3F"><span class="section-number-4">7.3.2</span> How to order lines alphabetically?</h4>
+<div class="outline-text-4" id="text-7-3-2">
+<p>
+?
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20align%20assignment%20or%20equal%20symbols%20across%20lines%3F" class="outline-4">
+<h4 id="How%20to%20align%20assignment%20or%20equal%20symbols%20across%20lines%3F"><span class="section-number-4">7.3.3</span> How to align assignment or equal symbols across lines?</h4>
+<div class="outline-text-4" id="text-7-3-3">
+<ul class="org-ul">
+<li><a href="https://github.com/seasmith/AlignAssign">AlignAssign</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Stan%20programming" class="outline-2">
+<h2 id="Stan%20programming"><span class="section-number-2">8</span> Stan programming</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div id="outline-container-Stan" class="outline-3">
+<h3 id="Stan"><span class="section-number-3">8.1</span> Stan</h3>
+<div class="outline-text-3" id="text-8-1">
+</div>
+<div id="outline-container-How%20do%20I%20choose%20between%20%3Dtransformed%20parameters%3D%20vs%20%3Dmodel%3D%20blocks%3F" class="outline-4">
+<h4 id="How%20do%20I%20choose%20between%20%3Dtransformed%20parameters%3D%20vs%20%3Dmodel%3D%20blocks%3F"><span class="section-number-4">8.1.1</span> How do I choose between <code>transformed parameters</code> vs <code>model</code> blocks?</h4>
+<div class="outline-text-4" id="text-8-1-1">
+<ul class="org-ul">
+<li>Variables in the <code>transformed parameters</code> blocks
+<ol class="org-ol">
+<li>Can have constraints for error checking</li>
+<li>Are global
+<ol class="org-ol">
+<li>can be accessed from the <code>generated quantities</code> block</li>
+<li>are part of the output by default</li>
+</ol></li>
+</ol></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Data%20science" class="outline-2">
+<h2 id="Data%20science"><span class="section-number-2">9</span> Data science</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-Data%20backup" class="outline-3">
+<h3 id="Data%20backup"><span class="section-number-3">9.1</span> Data backup</h3>
+<div class="outline-text-3" id="text-9-1">
+</div>
+<div id="outline-container-What%20software%20backup%20should%20I%20use%3F" class="outline-4">
+<h4 id="What%20software%20backup%20should%20I%20use%3F"><span class="section-number-4">9.1.1</span> What software backup should I use?</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<ul class="org-ul">
+<li><a href="https://www.borgbackup.org/">Borg</a>: Deduplicating archiver with compression and encryption</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20mark%20a%20folder%20not%20to%20be%20backed%20up%3F" class="outline-4">
+<h4 id="How%20to%20mark%20a%20folder%20not%20to%20be%20backed%20up%3F"><span class="section-number-4">9.1.2</span> How to mark a folder not to be backed up?</h4>
+<div class="outline-text-4" id="text-9-1-2">
+<ul class="org-ul">
+<li><a href="https://bford.info/cachedir/">Cache Directory Tagging Specification</a>: avoid backing up,
+archiving, or otherwise unnecessarily copying directories</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-Data%20processing" class="outline-3">
+<h3 id="Data%20processing"><span class="section-number-3">9.2</span> Data processing</h3>
+<div class="outline-text-3" id="text-9-2">
+</div>
+<div id="outline-container-GNU%20Make" class="outline-4">
+<h4 id="GNU%20Make"><span class="section-number-4">9.2.1</span> GNU Make</h4>
+<div class="outline-text-4" id="text-9-2-1">
+<ul class="org-ul">
+<li><a href="https://kbroman.org/minimal_make/">Minimal make file</a></li>
+<li><a href="https://stackoverflow.com/a/2214593/2860744">Passing arguments to make</a></li>
+<li><a href="https://www.gnu.org/software/make/manual/make.html#Multiple-Targets">Rules with grouped targets</a>: when one script produces more than one
+target</li>
+<li><a href="https://www.gnu.org/software/make/manual/make.html#Automatic-Variables">Automatic variables</a>: handy to write recipes</li>
+<li><a href="https://swcarpentry.github.io/make-novice/">Automation and make</a>: for analysis, visualization and papers</li>
+<li><a href="https://swcarpentry.github.io/make-novice/08-self-doc/index.html">Self-documenting makefiles</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Pipeline%20automation" class="outline-4">
+<h4 id="Pipeline%20automation"><span class="section-number-4">9.2.2</span> Pipeline automation</h4>
+<div class="outline-text-4" id="text-9-2-2">
+<ul class="org-ul">
+<li><a href="https://stat545.com/automating-pipeline.html">Automating data-analysis pipelines</a></li>
+<li><a href="https://github.com/pditommaso/awesome-pipeline">Awesome pipeline</a>: curated list of awesome pipeline toolkits</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20view%20tabular%20data%3F" class="outline-4">
+<h4 id="How%20to%20view%20tabular%20data%3F"><span class="section-number-4">9.2.3</span> How to view tabular data?</h4>
+<div class="outline-text-4" id="text-9-2-3">
+<ul class="org-ul">
+<li><a href="https://aur.archlinux.org/pspg.git">Tabular data pager</a>: works fine with CSV files too!</li>
+<li><a href="https://github.com/saulpw/visidata">VisiData</a>: lightning fast tabular data exploring, arranging, plotting</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-ETL%20cycle" class="outline-4">
+<h4 id="ETL%20cycle"><span class="section-number-4">9.2.4</span> ETL cycle</h4>
+<div class="outline-text-4" id="text-9-2-4">
+<ol class="org-ol">
+<li>Cycle initiation</li>
+<li>Build reference data</li>
+<li>Extract (from sources)</li>
+<li>Validate</li>
+<li>Transform (clean, apply business rules, check for data integrity, create aggregates or disaggregates)</li>
+<li>Stage (load into staging tables, if used)</li>
+<li>Audit reports (for example, on compliance with business rules. Also, in case of failure, helps to diagnose/repair)</li>
+<li>Publish (to target tables)</li>
+<li>Archive</li>
+</ol>
+
+<p>
+Source: <a href="https://en.wikipedia.org/wiki/Extract,_transform,_load#Real-life_ETL_cycle">Real-life ETL cycle</a>
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="ETL%20Template"></a>ETL Template<br />
+<div class="outline-text-5" id="text-9-2-4-1">
+<ul class="org-ul">
+<li>Type of tasks
+<ul class="org-ul">
+<li>Data loading
+<ul class="org-ul">
+<li>Keep many small units as principle</li>
+</ul></li>
+<li>Data munging
+<ul class="org-ul">
+<li>Munge many small units in parallel</li>
+</ul></li>
+<li>Data processing &#x2013; computationally intensive PEA
+<ul class="org-ul">
+<li>Run tasks that need many data units (prepare)</li>
+<li><p>
+Run tasks that need one data unit only in parallel (execute)
+</p>
+<ul class="org-ul">
+<li>One script with command argument line?</li>
+<li>Makefile call the script?</li>
+<li>One shell script to call makefile?</li>
+</ul>
+<p>
+<b>*</b> TODO This needs to be figured out
+</p></li>
+<li>Run tasks that need many data units (aggregate)</li>
+</ul></li>
+<li>Data storing
+<ul class="org-ul">
+<li>Write many small units to disk</li>
+<li>Write aggregates for each small data unit or together?</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-Workflow%20for%20statistical%20analysis%20and%20report%20writing" class="outline-4">
+<h4 id="Workflow%20for%20statistical%20analysis%20and%20report%20writing"><span class="section-number-4">9.2.5</span> Workflow for statistical analysis and report writing</h4>
+<div class="outline-text-4" id="text-9-2-5">
+<ul class="org-ul">
+<li><a href="https://stackoverflow.com/questions/1429907/workflow-for-statistical-analysis-and-report-writing">Workflow for statistical analysis and report writing</a></li>
+<li><a href="https://github.com/ropensci/rrrpkg">What is a research compendium for reproducible research</a></li>
+<li><a href="https://books.ropensci.org/drake/similar-work.html">Drake documentation</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-A%20typical%20workflow" class="outline-3">
+<h3 id="A%20typical%20workflow"><span class="section-number-3">9.3</span> A typical workflow</h3>
+<div class="outline-text-3" id="text-9-3">
+<ol class="org-ol">
+<li>For each dataset
+<ol class="org-ol">
+<li>Acquire raw data</li>
+<li>Munge data</li>
+<li>Run many independent</li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-Data%20visualization" class="outline-3">
+<h3 id="Data%20visualization"><span class="section-number-3">9.4</span> Data visualization</h3>
+<div class="outline-text-3" id="text-9-4">
+</div>
+<div id="outline-container-Color%20palette" class="outline-4">
+<h4 id="Color%20palette"><span class="section-number-4">9.4.1</span> Color palette</h4>
+<div class="outline-text-4" id="text-9-4-1">
+<ul class="org-ul">
+<li><a href="https://ux.stackexchange.com/questions/94696/color-palette-for-all-types-of-color-blindness">Color Palette for All types of Color Blindness</a></li>
+<li><a href="http://mkweb.bcgsc.ca/colorblind/">Color-palette for color blindness</a>: maintain perceptual luminance
+uniformity in color blind space</li>
+<li><a href="https://jfly.uni-koeln.de/color/#pallet">Color Universal Design</a>: set of colors that is unambiguous both to
+colorblinds and non-colorblinds</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Data%20visualization--Resources" class="outline-4">
+<h4 id="Data%20visualization--Resources"><span class="section-number-4">9.4.2</span> Resources</h4>
+<div class="outline-text-4" id="text-9-4-2">
+<ul class="org-ul">
+<li><a href="https://blog.datawrapper.de/colors/">What to consider when choosing colors for data visualization</a></li>
+<li><a href="https://www.data-to-viz.com/#explore">Data-to-viz</a>: visualization decision tree guide</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-High%20power%20computing" class="outline-3">
+<h3 id="High%20power%20computing"><span class="section-number-3">9.5</span> High power computing</h3>
+<div class="outline-text-3" id="text-9-5">
+</div>
+<div id="outline-container-How%20to%20nicely%20list%20all%20my%20jobs%20in%20Slurm%3F" class="outline-4">
+<h4 id="How%20to%20nicely%20list%20all%20my%20jobs%20in%20Slurm%3F"><span class="section-number-4">9.5.1</span> How to nicely list all my jobs in Slurm?</h4>
+<div class="outline-text-4" id="text-9-5-1">
+<div class="org-src-container">
+<pre class="src src-shell">watch -d squeue --me --format=<span style="color: #f1fa8c;">\"</span>%.18i %.18P %.32j %.8u %.2t <span style="color: #f1fa8c;">\|</span> %.10M <span style="color: #f1fa8c;">\|</span> %.10l <span style="color: #f1fa8c;">\|</span> %.19S <span style="color: #f1fa8c;">\|</span> %.6D %20Y %R<span style="color: #f1fa8c;">\"</span> --sort=i
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-Naming%20convention" class="outline-3">
+<h3 id="Naming%20convention"><span class="section-number-3">9.6</span> Naming convention</h3>
+<div class="outline-text-3" id="text-9-6">
+</div>
+<div id="outline-container-Common%20guidelines" class="outline-4">
+<h4 id="Common%20guidelines"><span class="section-number-4">9.6.1</span> Common guidelines</h4>
+<div class="outline-text-4" id="text-9-6-1">
+<ul class="org-ul">
+<li>Name things mainly for their role, sometimes for their type</li>
+<li>Variable names follow mathematical notation only in low-level
+functions, use meaningful name for user facing variables</li>
+<li>Use unabbreviated verbs for function names</li>
+<li>Keep abbreviations between 3 and 4 chars</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Keywords" class="outline-4">
+<h4 id="Keywords"><span class="section-number-4">9.6.2</span> Keywords</h4>
+<div class="outline-text-4" id="text-9-6-2">
+<p>
+<b>Modeling</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>ou</code></td>
+<td class="org-left">Observational unit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>xu</code></td>
+<td class="org-left">Experimental unit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sim</code></td>
+<td class="org-left">Simulated/simulations</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rsts</code></td>
+<td class="org-left">Restars</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>init</code></td>
+<td class="org-left">Initialize/initialization</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pars</code></td>
+<td class="org-left">A vector of parameter</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fix</code></td>
+<td class="org-left">Fixed values</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>kwn</code></td>
+<td class="org-left">Known values</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>val</code></td>
+<td class="org-left">Validation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>opt</code></td>
+<td class="org-left">Optima (obtained with optimization)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fit</code></td>
+<td class="org-left">Fit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>prd</code></td>
+<td class="org-left">Predicted</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Cross-validation</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">oos</td>
+<td class="org-left">Out of sample</td>
+</tr>
+
+<tr>
+<td class="org-left">ins</td>
+<td class="org-left">In sample</td>
+</tr>
+
+<tr>
+<td class="org-left">ios</td>
+<td class="org-left">In and out of sample</td>
+</tr>
+
+<tr>
+<td class="org-left">idx</td>
+<td class="org-left">Index</td>
+</tr>
+
+<tr>
+<td class="org-left">ind</td>
+<td class="org-left">Indicator (boolean, true or false)</td>
+</tr>
+
+<tr>
+<td class="org-left">fold</td>
+<td class="org-left">Fold (as in K-fold CV)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Object types</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Str</td>
+<td class="org-left">String</td>
+</tr>
+
+<tr>
+<td class="org-left">Ls</td>
+<td class="org-left">List</td>
+</tr>
+
+<tr>
+<td class="org-left">Li</td>
+<td class="org-left">List item</td>
+</tr>
+
+<tr>
+<td class="org-left">Mat</td>
+<td class="org-left">Matrix</td>
+</tr>
+
+<tr>
+<td class="org-left">Vec</td>
+<td class="org-left">Vector</td>
+</tr>
+
+<tr>
+<td class="org-left">Fun</td>
+<td class="org-left">Function</td>
+</tr>
+
+<tr>
+<td class="org-left">DF</td>
+<td class="org-left">Data frame / data.table</td>
+</tr>
+
+<tr>
+<td class="org-left">LDF</td>
+<td class="org-left">Long data.frame / data.table</td>
+</tr>
+
+<tr>
+<td class="org-left">WDF</td>
+<td class="org-left">Wide data.frame / data.table (might have more than one)</td>
+</tr>
+
+<tr>
+<td class="org-left">xi</td>
+<td class="org-left">A scalar (must be a scalar)</td>
+</tr>
+
+<tr>
+<td class="org-left">xs</td>
+<td class="org-left">A vector (must be a vector)</td>
+</tr>
+
+<tr>
+<td class="org-left">x</td>
+<td class="org-left">A scalar and/or a vector (both should work)</td>
+</tr>
+
+<tr>
+<td class="org-left">X</td>
+<td class="org-left">A vector or matrix (both should work)</td>
+</tr>
+
+<tr>
+<td class="org-left">Bit</td>
+<td class="org-left">A scalar, vector, or matrix bitmask</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Transformations</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">sc</td>
+<td class="org-left">Scaled</td>
+</tr>
+
+<tr>
+<td class="org-left">uc</td>
+<td class="org-left">Unscaled? maybe `nt` for natural? `og` for original?</td>
+</tr>
+
+<tr>
+<td class="org-left">svd</td>
+<td class="org-left">guess what :)</td>
+</tr>
+
+<tr>
+<td class="org-left">pca</td>
+<td class="org-left">idem</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Other</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">id</td>
+<td class="org-left">Identification code</td>
+</tr>
+
+<tr>
+<td class="org-left">ET</td>
+<td class="org-left">Elapsed time</td>
+</tr>
+
+<tr>
+<td class="org-left">seed</td>
+<td class="org-left">Seed number</td>
+</tr>
+
+<tr>
+<td class="org-left">hash</td>
+<td class="org-left">For a hash (if it's an id, use id instead)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Statistics</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">med</td>
+<td class="org-left">Median</td>
+</tr>
+
+<tr>
+<td class="org-left">mean</td>
+<td class="org-left">Mean</td>
+</tr>
+
+<tr>
+<td class="org-left">var</td>
+<td class="org-left">Variance</td>
+</tr>
+
+<tr>
+<td class="org-left">cov</td>
+<td class="org-left">Covariance</td>
+</tr>
+
+<tr>
+<td class="org-left">cor</td>
+<td class="org-left">Correlation</td>
+</tr>
+
+<tr>
+<td class="org-left">wt</td>
+<td class="org-left">Weight (or ws and wi)</td>
+</tr>
+
+<tr>
+<td class="org-left">lsc</td>
+<td class="org-left">Length-scale</td>
+</tr>
+
+<tr>
+<td class="org-left">qi</td>
+<td class="org-left">Quantile</td>
+</tr>
+
+<tr>
+<td class="org-left">qs</td>
+<td class="org-left">Vector of quantiles</td>
+</tr>
+
+<tr>
+<td class="org-left">sigma2</td>
+<td class="org-left">Use 2 instead of Sq o.o</td>
+</tr>
+
+<tr>
+<td class="org-left">ll</td>
+<td class="org-left">Log-likelihood</td>
+</tr>
+
+<tr>
+<td class="org-left">hess</td>
+<td class="org-left">Hessian matrix</td>
+</tr>
+
+<tr>
+<td class="org-left">mse</td>
+<td class="org-left">Mean square error</td>
+</tr>
+
+<tr>
+<td class="org-left">rmse</td>
+<td class="org-left">Root mean square error</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Measurement units</b>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Bm</td>
+<td class="org-left">Biomass</td>
+</tr>
+
+<tr>
+<td class="org-left">KgHa</td>
+<td class="org-left">Kilogram per hectare</td>
+</tr>
+
+<tr>
+<td class="org-left">MgHa</td>
+<td class="org-left">Megamgram per hectare</td>
+</tr>
+
+<tr>
+<td class="org-left">BuAc</td>
+<td class="org-left">Bushels per acre</td>
+</tr>
+
+<tr>
+<td class="org-left">Temp</td>
+<td class="org-left">Temperature</td>
+</tr>
+
+<tr>
+<td class="org-left">El</td>
+<td class="org-left">Elevation</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Statistics" class="outline-2">
+<h2 id="Statistics"><span class="section-number-2">10</span> Statistics</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-Statistics--Statistics" class="outline-3">
+<h3 id="Statistics--Statistics"><span class="section-number-3">10.1</span> Statistics</h3>
+<div class="outline-text-3" id="text-10-1">
+</div>
+<div id="outline-container-Principal%20Component%20Regression" class="outline-4">
+<h4 id="Principal%20Component%20Regression"><span class="section-number-4">10.1.1</span> Principal Component Regression</h4>
+<div class="outline-text-4" id="text-10-1-1">
+<p>
+Let \(\mathbf{T} = \mathbf{X} \mathbf{W}\) for principal component
+score matrix \(\mathbf{T}\) and loading matrix \(\mathbf{W}\). Set the
+models \(Y = \mathbf{X} \mathbf{\beta} + \mathbf{\varepsilon}\) and
+\(Y = \mathbf{T} \mathbf{\beta}_T + \mathbf{\varepsilon}\). Then,
+\(\mathbf{X} \mathbf{\beta} = \mathbf{T} \mathbf{\beta}_T \iff
+   \mathbf{\beta} = \mathbf{W} \mathbf{\beta}_T\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-How%20to%20revert%20SVD%3F" class="outline-4">
+<h4 id="How%20to%20revert%20SVD%3F"><span class="section-number-4">10.1.2</span> How to revert SVD?</h4>
+<div class="outline-text-4" id="text-10-1-2">
+<ul class="org-ul">
+<li><a href="https://stats.stackexchange.com/a/229093/31243">How to reverse PCA and reconstruct original variables from several principal components?</a></li>
+<li><a href="https://stats.stackexchange.com/a/134283/31243">Relationship between SVD and PCA. How to use SVD to perform PCA?</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Priors" class="outline-4">
+<h4 id="Priors"><span class="section-number-4">10.1.3</span> Priors</h4>
+<div class="outline-text-4" id="text-10-1-3">
+<ul class="org-ul">
+<li><a href="http://www.stats.org.uk/priors/noninformative/YangBerger1998.pdf">A Catalog of Noninformative Priors</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-MCMC" class="outline-4">
+<h4 id="MCMC"><span class="section-number-4">10.1.4</span> MCMC</h4>
+<div class="outline-text-4" id="text-10-1-4">
+<ul class="org-ul">
+<li><a href="http://users.stat.umn.edu/~geyer/mcmc/one.html">One long run in MCMC</a>: If you can't get a good answer with one
+long run, then you can't get a good answer with many short runs
+either.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Mathematics" class="outline-2">
+<h2 id="Mathematics"><span class="section-number-2">11</span> Mathematics</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-Math" class="outline-3">
+<h3 id="Math"><span class="section-number-3">11.1</span> Math</h3>
+<div class="outline-text-3" id="text-11-1">
+</div>
+<div id="outline-container-Linear%20algebra" class="outline-4">
+<h4 id="Linear%20algebra"><span class="section-number-4">11.1.1</span> Linear algebra</h4>
+<div class="outline-text-4" id="text-11-1-1">
+<ul class="org-ul">
+<li><a href="http://www2.imm.dtu.dk/pubdb/edoc/imm3274.pdf">The Matrix Cookbook</a>: collection of linear algebra facts</li>
+<li><a href="http://www.matrixcalculus.org/">Matrix calculus</a>: symbolic vector and matrix derivatives</li>
+<li><a href="http://www.ee.ic.ac.uk/hp/staff/dmb/matrix/intro.html">The Matrix Reference Manual</a>: reference information about linear
+algebra and the properties of real and complex matrices.</li>
+<li><a href="https://tminka.github.io/papers/matrix/minka-matrix.pdf">Old and New Matrix Algebra Useful for Statistics</a>: large number of
+matrix identities.</li>
+<li><a href="https://cs.nyu.edu/~roweis/notes.html">Useful Matrix and Gaussian formulae</a>: reference sheets of useful
+matrix and Gaussian formulae.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Optimization" class="outline-4">
+<h4 id="Optimization"><span class="section-number-4">11.1.2</span> Optimization</h4>
+<div class="outline-text-4" id="text-11-1-2">
+<ul class="org-ul">
+<li><a href="http://www.geno-project.org/">GENO</a>: optimization solver code generator</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Other%20references" class="outline-4">
+<h4 id="Other%20references"><span class="section-number-4">11.1.3</span> Other references</h4>
+<div class="outline-text-4" id="text-11-1-3">
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/List_of_limits">List of limits</a></li>
+<li><a href="https://en.wikipedia.org/wiki/List_of_logarithmic_identities">List of logarithmic identities</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-Science" class="outline-2">
+<h2 id="Science"><span class="section-number-2">12</span> Science</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-Scientific%20communication" class="outline-3">
+<h3 id="Scientific%20communication"><span class="section-number-3">12.1</span> Scientific communication</h3>
+<div class="outline-text-3" id="text-12-1">
+<p>
+Communication is as hard as it gets. There's a trade-off between
+message length, precision, ease of reading, and understandability. I
+thrive for short and precise sentences that are easy to digest that
+are modular yet feel complete. Here's a couple notes for better writting.
+</p>
+</div>
+
+<div id="outline-container-Scientific%20communication--General%20resources" class="outline-4">
+<h4 id="Scientific%20communication--General%20resources"><span class="section-number-4">12.1.1</span> General resources</h4>
+<div class="outline-text-4" id="text-12-1-1">
+<ul class="org-ul">
+<li>The Elements of Style by Strunk, W., Jr. and White, E.B. An
+opinionated style guide.</li>
+<li>Garner's Modern American Usage by Bryan A. Garner.</li>
+<li><a href="http://proselint.com/">proselint</a>: whisper suggestions on how to improve your prose, see
+<a href="http://proselint.com/checks/">what it looks for</a>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-My%20own%20common%20tics%20to%20grep%20for" class="outline-4">
+<h4 id="My%20own%20common%20tics%20to%20grep%20for"><span class="section-number-4">12.1.2</span> My own common tics to grep for</h4>
+<div class="outline-text-4" id="text-12-1-2">
+<ul class="org-ul">
+<li>No dash when using the wise suffix, e.g., elementwise instead of
+element-wise</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-No%20adjectives%20allowed" class="outline-4">
+<h4 id="No%20adjectives%20allowed"><span class="section-number-4">12.1.3</span> No adjectives allowed</h4>
+<div class="outline-text-4" id="text-12-1-3">
+<ul class="org-ul">
+<li>Good, best, better: in what sense?</li>
+<li>Difficult: what are you trying to say more precisely? What's the
+complexity?</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Use%20technical%20terms" class="outline-4">
+<h4 id="Use%20technical%20terms"><span class="section-number-4">12.1.4</span> Use technical terms</h4>
+<div class="outline-text-4" id="text-12-1-4">
+<ul class="org-ul">
+<li>List of technical names used frequently and short sentences.</li>
+<li>Emulator, surrogate, meta-model, statistical model <span class="underline">versus</span>
+computer experiment, computer model, mechanistic model, physical
+model, climate model, what have you.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-Repeat%20the%20technical%20terms%20when%20in%20doubt" class="outline-4">
+<h4 id="Repeat%20the%20technical%20terms%20when%20in%20doubt"><span class="section-number-4">12.1.5</span> Repeat the technical terms when in doubt</h4>
+<div class="outline-text-4" id="text-12-1-5">
+<p>
+Yeah, it sounds weird to be repetitive and I sometimes feel that I
+keep repeting myself too much. As a reader, though, I sometimes
+wish the writter would be more <span class="underline">precise</span> even at the price of
+repetition. Even thought a section might be about a specific
+density function (e.g., predictive density), make sure that in
+every sentence it is obvious that you are referring to that
+density and not to any of the dozen densities that a model have
+and are highly connected to the density you are talking about.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Attributive%20nouns" class="outline-4">
+<h4 id="Attributive%20nouns"><span class="section-number-4">12.1.6</span> Attributive nouns</h4>
+<div class="outline-text-4" id="text-12-1-6">
+<p>
+They are tough to beat! In most situations, I prefer an extensive
+use of attributive nouns. Be ware they grow too big too often; I
+sometimes break a really long chain of nouns into two smaller
+attribute noun clauses.
+</p>
+
+<p>
+Compare "<i>the benefit of the parametrization that we propose for
+this model</i>" versus "<i>The proposed model parametrization benefit</i>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Oral%20presentations" class="outline-4">
+<h4 id="Oral%20presentations"><span class="section-number-4">12.1.7</span> Oral presentations</h4>
+<div class="outline-text-4" id="text-12-1-7">
+<ul class="org-ul">
+<li>A sentence is better than a paragraph. A phrase is better than a
+sentence. A word is better than a phrase. An image is better than
+a word.</li>
+<li>Have you noticed how hard it is to convey a technical detail
+while giving an oral presentation? Now imagine how hard it is for
+the audience to understand anything too technical. Be a nice
+speaker instead :)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-Scientific%20programming" class="outline-3">
+<h3 id="Scientific%20programming"><span class="section-number-3">12.2</span> Scientific programming</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li><a href="https://softwareengineering.stackexchange.com/q/373633">Programming cleanly when writing scientific code</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-Research%20project" class="outline-3">
+<h3 id="Research%20project"><span class="section-number-3">12.3</span> Research project</h3>
+<div class="outline-text-3" id="text-12-3">
+<p>
+Four git repositories are needed. An overarching repository for the
+project (<code>project</code>), and subcomponents for the three elements in the
+research project (<code>data</code>, <code>analytics</code>, <code>literature</code>
+respectively). Possibly use git submodules for the latter.
+</p>
+
+<ul class="org-ul">
+<li>Data: data acquisition and munging, i.e. from raw data to the
+format required downstream</li>
+<li>Analytics: analyses of the above data</li>
+<li>Literature: writing based on the above analyses, e.g., abstracts,
+reports, manuscripts, presentations</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-Scientific%20writing" class="outline-3">
+<h3 id="Scientific%20writing"><span class="section-number-3">12.4</span> Scientific writing</h3>
+<div class="outline-text-3" id="text-12-4">
+</div>
+<div id="outline-container-Tags" class="outline-4">
+<h4 id="Tags"><span class="section-number-4">12.4.1</span> Tags</h4>
+<div class="outline-text-4" id="text-12-4-1">
+<p>
+You probably want a LaTeX command for these.
+</p>
+
+<ul class="org-ul">
+<li>Citation needed: when you are very inclined to accept the
+statement, but still need to pin-point the best reference</li>
+<li>Verification needed: when you want to double-check that something
+is as stated</li>
+<li>Revision needed: when you want to review the math or, more
+generally, the logic of the statement</li>
+<li>Further research needed: when you make a broad statement, typically
+outside the scope of the current writing, that seems worth
+exploring by you or anyone else</li>
+<li>Discussion needed: when you want to have others opinion</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-Numerical%20computing" class="outline-3">
+<h3 id="Numerical%20computing"><span class="section-number-3">12.5</span> Numerical computing</h3>
+<div class="outline-text-3" id="text-12-5">
+</div>
+<div id="outline-container-How%20to%20select%20algorithm%20tolerance%20for%20numerical%20differentiation%3F" class="outline-4">
+<h4 id="How%20to%20select%20algorithm%20tolerance%20for%20numerical%20differentiation%3F"><span class="section-number-4">12.5.1</span> How to select algorithm tolerance for numerical differentiation?</h4>
+<div class="outline-text-4" id="text-12-5-1">
+<p>
+In absence of problem-specific information, use the square root of
+machine epsilon for forward difference, and the cubic root of machine
+epsilon for centered difference. Finding a minimum gets the square
+root of epsilon while finding a root gets epsilon.
+</p>
+
+<p>
+Source: <a href="https://scicomp.stackexchange.com/q/14355">Choosing epsilon</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Luis Damiano</p>
+<p class="date">Created: 2022-01-13 Thu 15:51</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
