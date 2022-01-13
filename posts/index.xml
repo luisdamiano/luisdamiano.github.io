@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Luis Damiano</title>
-    <link>luisdamiano.github.io/posts/</link>
+    <link>https://luisdamiano.github.io/posts/</link>
     <description>Recent content in Posts on Luis Damiano</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 13 Jan 2022 15:07:09 -0600</lastBuildDate><atom:link href="luisdamiano.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Jan 2022 15:07:09 -0600</lastBuildDate><atom:link href="https://luisdamiano.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dummy</title>
-      <link>luisdamiano.github.io/posts/_dummy/</link>
+      <link>https://luisdamiano.github.io/posts/_dummy/</link>
       <pubDate>Thu, 13 Jan 2022 15:07:09 -0600</pubDate>
       
-      <guid>luisdamiano.github.io/posts/_dummy/</guid>
+      <guid>https://luisdamiano.github.io/posts/_dummy/</guid>
       <description></description>
     </item>
     
