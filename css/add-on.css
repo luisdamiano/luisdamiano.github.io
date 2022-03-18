@@ -8,9 +8,16 @@
     line-height: 1.4em;
 }
 
+#site-intro header p {
+    font-size: .8em !important;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+
 #site-intro main p {
     font-size: 1em !important;
     line-height: 1.4em;
+    margin-block-start: 0em;
 }
 
 section #recent-posts, section #categories,
