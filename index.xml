@@ -21,7 +21,8 @@
       <pubDate>Thu, 13 Jan 2022 10:55:29 -0600</pubDate>
       
       <guid>https://luisdamiano.github.io/home/</guid>
-      <description>Ph.D. student in Statistics at Iowa State University adviced by Dr. Jarad Niemi Research focus on emulation (AKA surrogates, meta-modeling) for computer experiments via Gaussian Process priors, typically for uncertainty quantification R is for data munging, data visualization, and more stats-y modeling, Python for ML/DL modeling and deployment, C&amp;#43;&amp;#43; for performance, LaTeX for typesetting, GNU Make for pipelining, Unix Shell for system automation, Org-mode for note taking and planning, GNU Emacs for the ultimate text editing experience, Arch Linux for gluing all together Tackling a new problem?</description>
+      <description>Looking for the knowledge base ? A collection of Linux, tools, text editors, typesetting, programming, data science, statistics, math, and writing tips
+Ph.D. Candidate in Statistics at Iowa State University adviced by Dr. Jarad Niemi Research focus on emulation (AKA surrogates, meta-modeling) for computer experiments via Gaussian Process priors, typically for uncertainty quantification R is for data munging, data visualization, and more stats-y modeling, Python for ML/DL modeling and deployment, C&amp;#43;&amp;#43; for performance, LaTeX for typesetting, GNU Make for pipelining, Unix Shell for system automation, Org-mode for note taking and planning, GNU Emacs for the ultimate text editing experience, Arch Linux for gluing all together Tackling a new problem?</description>
     </item>
     
     <item>
@@ -30,7 +31,8 @@
       <pubDate>Wed, 12 Jan 2022 17:03:11 -0600</pubDate>
       
       <guid>https://luisdamiano.github.io/research/</guid>
-      <description>Table Of Contents BayesHMM: Full Bayesian Inference for Hidden Markov Models bayesdfa: Bayesian Dynamic Factor Analysis (DFA) with &amp;lsquo;Stan&amp;rsquo; BayesHMM: An R Package for Full Bayesian Inference for Hidden Markov Models Hierarchical Hidden Markov Models in High-Frequency Stock Markets Time Series (Master&amp;rsquo;s level course) A Tutorial on Hidden Markov Models using Stan Evaluating Forecast Accuracy of GARCH Volatility Models Applied to Daily Stock Prices in Argentina Daily Stock Price Forecasts in Argentina Using Hidden Markov Models Bayesian Hierarchical Hidden Markov Models Applied to Financial Time Series A Quick Introduction to Hidden Markov Models Applied to Stock Volatility This short list excludes in printing and in progress work.</description>
+      <description>This short list excludes in printing and in progress work. A detailed Curriculum Vitae is available here .
+Table Of Contents Automatic Dynamic Relevance Determination for Gaussian process regression with high-dimensional functional inputs Automatic Dynamic Relevance Determination for atmospheric states over vertical pressure grids for the MLS forward The RITAS algorithm: a constructive yield monitor data processing algorithm Emulation of Agricultural Production Systems sIMulator (APSIM) BayesHMM: Full Bayesian Inference for Hidden Markov Models bayesdfa: Bayesian Dynamic Factor Analysis (DFA) with &amp;lsquo;Stan&amp;rsquo; BayesHMM: An R Package for Full Bayesian Inference for Hidden Markov Models Hierarchical Hidden Markov Models in High-Frequency Stock Markets Time Series (Master&amp;rsquo;s level course) A Tutorial on Hidden Markov Models using Stan Evaluating Forecast Accuracy of GARCH Volatility Models Applied to Daily Stock Prices in Argentina Daily Stock Price Forecasts in Argentina Using Hidden Markov Models Bayesian Hierarchical Hidden Markov Models Applied to Financial Time Series A Quick Introduction to Hidden Markov Models Applied to Stock Volatility Automatic Dynamic Relevance Determination for Gaussian process regression with high-dimensional functional inputs Submitted for publication - An article with a general framework for Gaussian process regression with functional inputs based on learning the relevance profile over the index space.</description>
     </item>
     
     <item>
@@ -39,7 +41,7 @@
       <pubDate>Wed, 12 Jan 2022 16:58:59 -0600</pubDate>
       
       <guid>https://luisdamiano.github.io/about/</guid>
-      <description>Hi there! I&amp;rsquo;m a Ph.D. student in Statistics at Iowa State University adviced by Dr. Jarad Niemi . My statistical interests include time series, state-space models, spatio-temporal models, computer experiments, Gaussian Processes, and more broadly all things Bayesian. Lately, I have focused on emulation (AKA surrogates, meta-modeling) for computer experiments via Gaussian Process priors, typically for uncertainty quantification. My big favorites are modeling, methodology extensions, and computational methods. I&amp;rsquo;ve had a few stats-y side projects such as leading the Gaussian Process reading group at ISU and developing BayesHMM .</description>
+      <description>Hi there! I&amp;rsquo;m a Ph.D. Candidate in Statistics at Iowa State University adviced by Dr. Jarad Niemi . My statistical interests include time series, state-space models, spatio-temporal models, computer experiments, Gaussian Processes, and more broadly all things Bayesian. Lately, I have focused on emulation (AKA surrogates, meta-modeling) for computer experiments via Gaussian Process priors, typically for uncertainty quantification. My big favorites are modeling, methodology extensions, and computational methods. I&amp;rsquo;ve had a few stats-y side projects such as leading the Gaussian Process reading group at ISU and developing BayesHMM .</description>
     </item>
     
   </channel>
