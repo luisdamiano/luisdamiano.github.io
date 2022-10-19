@@ -44,5 +44,14 @@ Table Of Contents Automatic Dynamic Relevance Determination for Gaussian process
       <description>Hi there! I&amp;rsquo;m a Ph.D. Candidate in Statistics at Iowa State University adviced by Dr. Jarad Niemi . My statistical interests include time series, state-space models, spatio-temporal models, computer experiments, Gaussian Processes, and more broadly all things Bayesian. Lately, I have focused on emulation (AKA surrogates, meta-modeling) for computer experiments via Gaussian Process priors, typically for uncertainty quantification. My big favorites are modeling, methodology extensions, and computational methods. I&amp;rsquo;ve had a few stats-y side projects such as leading the Gaussian Process reading group at ISU and developing BayesHMM .</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://luisdamiano.github.io/knowledge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://luisdamiano.github.io/knowledge/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
