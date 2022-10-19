@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Luis Damiano</title>
+    <title>Personal knowledge base on Luis Damiano</title>
     <link>https://luisdamiano.github.io/knowledge/</link>
-    <description>Recent content on Luis Damiano</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="https://luisdamiano.github.io/knowledge/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Personal knowledge base on Luis Damiano</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 13 Jan 2022 10:55:29 -0600</lastBuildDate><atom:link href="https://luisdamiano.github.io/knowledge/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
