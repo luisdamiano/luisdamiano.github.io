@@ -1,0 +1,165 @@
+---
+title: "Academic Work"
+date: 2022-01-12T17:03:11-06:00
+draft: false
+---
+
+This short list excludes in printing and in progress work. A detailed
+Curriculum Vitae is [available here](/inc/vitae_luis_damiano.pdf).
+
+---
+
+## Automatic Dynamic Relevance Determination for Gaussian process regression with high-dimensional functional inputs
+
+Submitted for publication - An article with a general framework for Gaussian
+process regression with functional inputs based on learning the relevance
+profile over the index space.
+
+- Pre-print: [10.48550/arXiv.2209.00044](https://arxiv.org/abs/2209.00044)
+
+October 2022 - A talk at the NASA JPL Uncertainty Quantification for Remote
+Sensing Inverse Problems.
+
+- Slides: to be posted
+
+August 2022 - A talk at the Pacific Northwest National Laboratory - ISU workshop.
+
+April 2022 - A talk at the SIAM Conference on Uncertainty Quantification.
+
+- Slides: [view online](https://github.com/luisdamiano/SIAMUQ22/blob/main/presentation.pdf)
+
+---
+
+## Automatic Dynamic Relevance Determination for atmospheric states over vertical pressure grids for the MLS forward
+
+October 2021 - A talk at the NASA JPL Uncertainty Quantification for Remote
+Sensing Inverse Problems.
+
+---
+
+## The RITAS algorithm: a constructive yield monitor data processing algorithm
+
+December 2020 - An article with a novel data-processing algorithm for irregular,
+misaligned, and overlapping spatial data recorded by yield monitor.
+
+- Pre-print: [10.48550/arXiv.2209.11313](https://arxiv.org/abs/2209.11313)
+
+---
+
+## Emulation of Agricultural Production Systems sIMulator (APSIM)
+
+September 2020 - A joint invited seminar with [Jarad
+Niemi](https://www.jarad.me/) at Los Alamos National Laboratory.
+
+- Slides: [view online](https://github.com/jarad/LANL2020/raw/master/LANL2020.pdf)
+
+---
+
+## BayesHMM: Full Bayesian Inference for Hidden Markov Models
+
+April 2019 - A poster presented at the 44th Spring Lecture Series,
+University of Arkansas.
+
+- Poster: [view online](/work/arkansas19_BayesHMM_poster.pdf).
+
+---
+
+## bayesdfa: Bayesian Dynamic Factor Analysis (DFA) with 'Stan'
+
+September 2018 - An R Package available on CRAN.
+
+- CRAN: [view online](https://cran.r-project.org/package=bayesdfa).
+
+---
+
+## BayesHMM: An R Package for Full Bayesian Inference for Hidden Markov Models
+
+August 2018 - Google Summer of Code 2018 project.
+
+- [View repo](https://github.com/luisdamiano/BayesHMM/).
+- [View draft vignette](https://luisdamiano.github.io/BayesHMM/articles/introduction.html).
+
+---
+
+## Hierarchical Hidden Markov Models in High-Frequency Stock Markets
+
+June 2018 - A full talk at the R/Finance 2018 Conference.
+
+- Slides: [view online](http://past.rinfinance.com/agenda/2018/LuisDamiano.pdf).
+
+---
+
+## Time Series (Master's level course) {#time-series-master-s-level-course}
+
+Abril 2018 - Lab slides for the Master's level course in Time Series
+(UNR).
+
+- Slides:
+    [0](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/0.pdf) -
+    [1](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/1.pdf) -
+    [2](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/2.pdf) -
+    [3](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/3.pdf) -
+    [4](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/4.pdf) -
+    [5](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/5.pdf) -
+    [6](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/6.pdf) -
+    [7](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/7.pdf) -
+    [8](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/8.pdf) -
+    [9](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/9.pdf) -
+    [10](https://github.com/luisdamiano/unrseries18/raw/master/clases/out/10.pdf).
+- Data: [view online](https://github.com/luisdamiano/unrseries18/tree/master/clases/data).
+- Final: [view online](https://github.com/luisdamiano/unrseries18/raw/master/final.pdf).
+
+---
+
+## A Tutorial on Hidden Markov Models using Stan
+
+January 2018 - Published in the proceedings of StanCon 2018.
+
+- Article: [view online](https://doi.org/10.5281/zenodo.1284341).
+- Files: [view online](https://github.com/stan-dev/stancon_talks/tree/master/2018/Contributed-Talks/04_damiano).
+
+---
+
+## Evaluating Forecast Accuracy of GARCH Volatility Models Applied to Daily Stock Prices in Argentina
+
+October 2017 - Graduate thesis for the Master's in Applied Statistics
+program.
+
+- Thesis: [view online](/work/mea17_GARCH_forecast_accuracy.pdf).
+- Slides: [view online](/work/mea17_GARCH_forecast_accuracy_presentation.pdf).
+
+---
+
+## Daily Stock Price Forecasts in Argentina Using Hidden Markov Models
+
+October 2017 - A lightning talk at the Inter-American Statistical
+Conference 2017.
+
+- Slides: [view online](/work/cie17_IOHMM_stock_forecast_argentina.pdf).
+
+---
+
+## Bayesian Hierarchical Hidden Markov Models Applied to Financial Time Series
+
+August 2017 - Google Summer of Code 2017 project.
+
+- [A brief technical introduction to Hidden Markov
+Models](/work/gsoc17_hmm_techreview.pdf).
+- [Input-Output Hidden Markov Model applied to financial time
+series](/work/gsoc17_iohmm_financial_time_series.html).
+- [Regime Switching and Technical Trading with Dynamic Bayesian
+Networks in High-Frequency Stock
+Markets](/work/gsoc17_rs_technical_trading.pdf).
+
+---
+
+## A Quick Introduction to Hidden Markov Models Applied to Stock Volatility
+
+May 2017 - A lightning talk at the R/Finance 2017 Conference.
+
+- Slides: [view
+repository](https://github.com/luisdamiano/rfinance17/), [view
+online](/work/rfinance17_presentation/presentation.html).
+- Accompanying notebook: [view
+repository](https://github.com/luisdamiano/rfinance17/), [view
+online](/work/rfinance17_notebook.nb.html).
